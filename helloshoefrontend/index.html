@@ -63,7 +63,10 @@
                       placeholder="Email address"
                     />
                     <label for="userEmail">Email address</label>
-                    <div id="emailError" class="text-danger fs-6"></div>
+                    <div
+                      id="emailError"
+                      class="text-danger fw-bold fs-6 mt-2 ms-3"
+                    ></div>
                   </div>
                   <!-- password field -->
                   <div class="form-floating h-50">
@@ -74,7 +77,10 @@
                       placeholder="Password"
                     />
                     <label for="userPassword">Password</label>
-                    <div id="passwordError" class="text-danger fs-6"></div>
+                    <div
+                      id="passwordError"
+                      class="text-danger fw-bold fs-6 mt-2 ms-3"
+                    ></div>
                   </div>
                 </div>
                 <div
@@ -84,7 +90,10 @@
                   <div
                     class="h-100 w-100 d-flex flex-column align-items-center"
                   >
-                    <div id="errorMessage" class="text-danger m-0 p-0"></div>
+                    <div
+                      id="errorMessage"
+                      class="text-danger fs-6 mt-2 ms-3"
+                    ></div>
                     <button
                       id="signInBtn"
                       class="btn btn-primary fw-bolder h-75 w-100"
@@ -125,7 +134,7 @@
           </div>
         </div>
         <div
-          class="sign-in-image h-100 w-50 bg-info rounded-start-5 overflow-hidden shadow z-1 position-relative"
+          class="sign-in-image h-100 w-50 rounded-start-5 overflow-hidden shadow z-1 position-relative"
         >
           <img
             src="assets/images/login/login-bg.jpg"
@@ -139,8 +148,29 @@
           />
         </div>
       </section>
-      <!--  -->
+      <!-- Dashboard -->
+      <section
+        class="dashboard-wrapper h-100 w-100 m-0 p-0 position-relative d-flex flex-row bg-white"
+      >
+        <nav class="navbar fixed-top bg-body-tertiary shadow-sm">
+          <div class="container-fluid d-flex align-items-center">
+            <a class="navbar-brand fs-3" href="#">
+              <img
+                src="assets/images/login/mainlogo.png"
+                alt="Logo"
+                width="30"
+                height="24"
+                class="d-inline-block align-text-top"
+              />
+              Happy Shoes
+            </a>
+          </div>
+        </nav>
+      </section>
     </main>
+    <script src="assets/bootstrap-5.3.2-dist/js/code.jquery.com_jquery-3.7.1.min.js"></script>
     <script src="assets/bootstrap-5.3.2-dist/js/bootstrap.min.js"></script>
+    <script src="assets/js_files/validation.js"></script>
+    <script src="assets/js_files/main.js"></script>
   </body>
 </html>
