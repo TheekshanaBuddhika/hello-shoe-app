@@ -1,6 +1,8 @@
 package lk.ijse.helloshoebackend.controller;
 
+import lk.ijse.helloshoebackend.dto.EmployeeDTO;
 import lk.ijse.helloshoebackend.dto.ResponseDTO;
+import lk.ijse.helloshoebackend.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
