@@ -8,10 +8,134 @@
       href="assets/bootstrap-5.3.2-dist/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="assets/stylesheets/mainstyle.css" />
-    <link rel="icon" href="assets/images/mainlogo.png" type="image/x-icon" />
+    <link
+      rel="icon"
+      href="assets/images/login/mainlogo.png"
+      type="image/x-icon"
+    />
     <title>Hello Shoe</title>
   </head>
   <body>
+    <main
+      class="container-fluid m-0 p-0 vh-100 w-100 bg-black position-relative"
+    >
+      <!-- login page -->
+      <section
+        class="login-form-wrapper container-fluid h-100 w-100 m-0 p-0 position-relative d-flex flex-row bg-white z-0"
+      >
+        <div
+          class="sign-in-form-wrapper h-100 w-50 bg-white d-flex justify-content-center align-items-center position-relative"
+        >
+          <div
+            class="inner-login-wrapper position-relative container d-flex flex-column p-3 h-75 w-50"
+          >
+            <div class="col h-100 align-items-center bg-white">
+              <!-- Welcome logo -->
+              <div
+                class="row-logo text-center d-flex flex-column align-items-center mb-5"
+              >
+                <div
+                  class="logo-text row w-100 h-50 m-0 p-0 d-flex align-items-center justify-content-center fw-bolder"
+                >
+                  <span
+                    class="m-0 p-0 h-100 d-flex align-items-center justify-content-center fs-1 fw-bolder mb-5"
+                    >Welcome Back</span
+                  >
+                </div>
+                <div class="row w-100 d-flex align-items-center fs-5 fw-bolder">
+                  <p class="row-text m-0 p-0">Log in to continue</p>
+                </div>
+              </div>
+              <!-- login form group -->
+              <form
+                id="loginForm"
+                class="field-container position-relative d-flex flex-column justify-content-between h-50"
+              >
+                <div
+                  class="field-wrapper container position-relative h-75 m-0 p-0 d-flex flex-column"
+                >
+                  <!-- email field -->
+                  <div class="form-floating h-50">
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="userEmail"
+                      placeholder="Email address"
+                    />
+                    <label for="userEmail">Email address</label>
+                    <div id="emailError" class="text-danger fs-6"></div>
+                  </div>
+                  <!-- password field -->
+                  <div class="form-floating h-50">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="userPassword"
+                      placeholder="Password"
+                    />
+                    <label for="userPassword">Password</label>
+                    <div id="passwordError" class="text-danger fs-6"></div>
+                  </div>
+                </div>
+                <div
+                  class="sign-in-wrapper container m-0 p-0 h-25 w-auto d-flex flex-column"
+                >
+                  <!--Sign in button -->
+                  <div
+                    class="h-100 w-100 d-flex flex-column align-items-center"
+                  >
+                    <div id="errorMessage" class="text-danger m-0 p-0"></div>
+                    <button
+                      id="signInBtn"
+                      class="btn btn-primary fw-bolder h-75 w-100"
+                    >
+                      Continue
+                    </button>
+                  </div>
+                  <!-- other form elements -->
+                </div>
+              </form>
+              <div
+                class="forgot-wrapper d-flex flex-row justify-content-between h-auto w-100 mt-3"
+              >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Remember me
+                  </label>
+                </div>
+                <a
+                  class="sign-up-link link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover mb-3 align-self-end"
+                  href=""
+                  >Forgot Password ?</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- copyrights -->
+          <div
+            class="rights-wrapper align-self-center position-absolute bottom-0 mb-4"
+          >
+            Copyright &copy; 2024 Zyko industries Pvt. Ltd. All rights reserved.
+          </div>
+        </div>
+        <div
+          class="sign-in-image h-100 w-50 bg-info rounded-start-5 overflow-hidden shadow z-1"
+        >
+          <img
+            src="assets/images/login/login-bg.jpg"
+            alt="login-background"
+            class="h-100 w-auto"
+          />
+        </div>
+      </section>
+      <!--  -->
+    </main>
     <script src="assets/bootstrap-5.3.2-dist/js/bootstrap.min.js"></script>
   </body>
 </html>
