@@ -1,6 +1,8 @@
 package lk.ijse.helloshoebackend.controller;
 
 import lk.ijse.helloshoebackend.dto.ResponseDTO;
+import lk.ijse.helloshoebackend.dto.SupplierDTO;
+import lk.ijse.helloshoebackend.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
