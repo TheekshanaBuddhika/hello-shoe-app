@@ -6,22 +6,27 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-public class SupplierDTO implements Serializable {
+public class CustomerDTO implements Serializable {
     private String id;
     private String name;
-    private String category;
     private String email;
-    private String mobileContact;
-    private String landContact;
+    private String contact;
+    private String gender;
+    private Integer level;
+    private Date resetPurchases;
+    private Integer ttlPoints;
+    private Date dob;
+    private Date joinedDate;
     private String line1;
     private String line2;
     private String line3;
     private String line4;
     private String line5;
-    private String line6;
+    private String userId;
 }
