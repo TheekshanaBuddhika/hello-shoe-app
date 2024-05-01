@@ -1,6 +1,7 @@
 package lk.ijse.helloshoebackend.service.impl;
 
 import lk.ijse.helloshoebackend.dto.UserDTO;
+import lk.ijse.helloshoebackend.repository.EmployeeRepository;
 import lk.ijse.helloshoebackend.repository.UserRepository;
 import lk.ijse.helloshoebackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
