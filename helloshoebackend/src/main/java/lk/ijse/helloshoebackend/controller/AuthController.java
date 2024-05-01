@@ -1,5 +1,6 @@
 package lk.ijse.helloshoebackend.controller;
 
+import lk.ijse.helloshoebackend.dto.LoginDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
