@@ -17,8 +17,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity
 @Table(name = "user")
+@Entity
 public class UserEntity {
     @Id
     @Column(name = "usr_id")
