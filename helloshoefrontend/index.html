@@ -13,6 +13,13 @@
       href="assets/images/login/mainlogo.png"
       type="image/x-icon"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Hello Shoe</title>
   </head>
   <body>
@@ -150,27 +157,408 @@
       </section>
       <!-- Dashboard -->
       <section
-        class="dashboard-wrapper h-100 w-100 m-0 p-0 position-relative d-flex flex-row bg-white"
+        class="dashboard-wrapper container-fluid h-100 w-100 m-0 p-0 position-relative d-flex flex-row bg-white d-flex align-items-center justify-content-center flex-column"
       >
-        <nav class="navbar fixed-top bg-body-tertiary shadow-sm">
-          <div class="container-fluid d-flex align-items-center">
-            <a class="navbar-brand fs-3" href="#">
-              <img
-                src="assets/images/login/mainlogo.png"
-                alt="Logo"
-                width="30"
-                height="24"
-                class="d-inline-block align-text-top"
-              />
-              Happy Shoes
-            </a>
-          </div>
+        <!-- header -->
+        <nav
+          class="sb-topnav navbar navbar-expand bg-wite position-absolute top-0 w-100 justify-content-between align-items-center"
+          style="height: 8%"
+        >
+          <!-- Navbar Brand-->
+          <p class="navbar-brand ms-3 m-0 p-0 text-dark fs-3 fw-bolder">
+            <img
+              src="assets/images/login/mainlogo.png"
+              class="me-2"
+              style="height: 30px"
+            />Happy Shoes
+          </p>
+
+          <!-- Navbar-->
+          <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                id="navbarDropdown"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                ><i class="fas fa-cog fa-xl fa-fw"></i
+              ></a>
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="navbarDropdown"
+              >
+                <li><a class="dropdown-item" href="#!">Settings</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#!">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
         </nav>
+
+        <!-- Content Form -->
+        <div
+          class="dashboard-detail-wrapper position-absolute d-flex flex-row bottom-0 start-0 end-0 bg-info"
+          style="height: 92%"
+        >
+          <!-- Sidebar  -->
+          <nav
+            id="sidebar"
+            class="position-relative h-100 bg-dark"
+            style="width: 20%"
+          >
+            <!-- side-bar profile-pic -->
+            <div
+              class="sidebar-header h-25 d-flex flex-column justify-content-center align-items-center position-relative"
+            >
+              <img
+                class="profile-pic bg-white h-50 rounded-circle"
+                style="aspect-ratio: 1/1"
+              />
+              <h6
+                class="text-secondary text-center text-white mt-3 fs-5"
+                id="admin-user-name"
+              >
+                USER
+              </h6>
+              <hr
+                class="border border-white border-1 opacity-50 w-75 position-absolute bottom-0"
+              />
+            </div>
+            <!-- side-bar content -->
+            <div class="w-100 h-75 d-flex align-items-center ms-2">
+              <ul
+                class="nav nav-pills flex-column mb-auto p-2"
+                id="side_bar_option"
+              >
+                <li class="admin-item nav-item nav-btn">
+                  <a href="index.html" class="nav-link nv-btn">
+                    <svg class="bi me-2" width="16" height="20">
+                      <i class="fas fa-user fa-xl fa-fw"></i>
+                    </svg>
+                    <small class="text-secondary fs-5 fw-bold ms-3"
+                      >Admin</small
+                    >
+                  </a>
+                </li>
+                <li class="inventory-item mt-3 nav-btn">
+                  <a href="inventory.html" class="nav-link">
+                    <svg class="bi me-2" width="16" height="20">
+                      <i class="fas fa-store fa-xl fa-fw"></i>
+                    </svg>
+                    <small class="text-secondary fs-5 fw-bold ms-3"
+                      >Inventory</small
+                    >
+                  </a>
+                </li>
+                <li class="refund-item mt-3 nav-btn">
+                  <a href="refund.html" class="nav-link">
+                    <svg class="bi me-2" width="16" height="20">
+                      <i class="fas fa-exchange-alt fa-xl fa-fw"></i>
+                    </svg>
+                    <small class="text-secondary fs-5 fw-bold ms-3"
+                      >Refund</small
+                    >
+                  </a>
+                </li>
+                <li class="supplier-item mt-3 nav-btn">
+                  <a href="supplier.html" class="nav-link">
+                    <svg class="bi me-2" width="16" height="20">
+                      <i class="fas fa-people-carry fa-xl fa-fw"></i>
+                    </svg>
+                    <small class="text-secondary fs-5 fw-bold ms-3"
+                      >Supplier</small
+                    >
+                  </a>
+                </li>
+                <li class="customer-item mt-3 nav-btn">
+                  <a href="customers.html" class="nav-link">
+                    <svg class="bi me-2" width="16" height="20">
+                      <i class="fas fa-address-book fa-xl fa-fw"></i>
+                    </svg>
+                    <small class="text-secondary fs-5 fw-bold ms-3"
+                      >Customers</small
+                    >
+                  </a>
+                </li>
+                <li class="employee-item mt-3 nav-btn">
+                  <a href="employee.html" class="nav-link">
+                    <svg class="bi me-2" width="16" height="20">
+                      <i class="fas fa-users fa-xl fa-fw"></i>
+                    </svg>
+                    <small class="text-secondary fs-5 fw-bold ms-3"
+                      >Employee</small
+                    >
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <!----------------------------------------------------------- content containers  ---------------------------------------------------------------->
+          <div id="Admin_board" class="container-fluid m-0 p-2 w-100">
+            <section>
+              <div class="container p-2">
+                <!--                <img id="login-img" src="../../assets/images/admin-bg.jpg" class="img-fluid w-100 position-fixed" alt="">-->
+                <div class="row flex-nowrap w-100 p-2">
+                  <div class="col-md-3">
+                    <div class="card bg-white text-dark shadow-lg">
+                      <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                          <div>
+                            <h6>Today's Money</h6>
+                            <h6>Rs. 6700</h6>
+                          </div>
+                          <div>
+                            <i
+                              class="bi bi-cart fs-2 bg-primary p-2 rounded-2 text-white"
+                            ></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="card bg-white text-dark shadow-lg">
+                      <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                          <div>
+                            <h6>Sales</h6>
+                            <h6>Rs. 780000</h6>
+                          </div>
+                          <div>
+                            <i
+                              class="bi bi-cart fs-2 bg-success p-2 rounded-2 text-white"
+                            ></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="card bg-white text-dark shadow-lg">
+                      <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                          <div>
+                            <h6>Sales</h6>
+                            <h6>Rs. 780000</h6>
+                          </div>
+                          <div>
+                            <i
+                              class="bi bi-cart fs-2 bg-danger p-2 rounded-2 text-white"
+                            ></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="card bg-white text-dark shadow-lg">
+                      <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                          <div>
+                            <h6>Sales</h6>
+                            <h6>Rs. 780000</h6>
+                          </div>
+                          <div>
+                            <i
+                              class="bi bi-cart fs-2 bg-success p-2 rounded-2 text-white"
+                            ></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-5 w-100 flex-nowrap p-2">
+                  <div class="col-md-6 overflow-y-scroll" style="height: 50vh">
+                    <div class="card bg-white text-dark shadow-lg">
+                      <div class="card-body">
+                        <h6>Recent Orders</h6>
+                        <hr />
+                        <table class="table table-borderless">
+                          <thead>
+                            <tr>
+                              <th>Order ID</th>
+                              <th>Customer</th>
+                              <th>Amount</th>
+                              <th>Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>1</td>
+                              <td>John Doe</td>
+                              <td>Rs. 6700</td>
+                              <td>
+                                <span class="badge bg-success">Delivered</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>John Doe</td>
+                              <td>Rs. 6700</td>
+                              <td>
+                                <span class="badge bg-warning">Pending</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>John Doe</td>
+                              <td>Rs. 6700</td>
+                              <td>
+                                <span class="badge bg-success">Delivered</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>John Doe</td>
+                              <td>Rs. 6700</td>
+                              <td>
+                                <span class="badge bg-danger">Cancelled</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>John Doe</td>
+                              <td>Rs. 6700</td>
+                              <td>
+                                <span class="badge bg-danger">Cancelled</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>John Doe</td>
+                              <td>Rs. 6700</td>
+                              <td>
+                                <span class="badge bg-danger">Cancelled</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>John Doe</td>
+                              <td>Rs. 6700</td>
+                              <td>
+                                <span class="badge bg-danger">Cancelled</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>John Doe</td>
+                              <td>Rs. 6700</td>
+                              <td>
+                                <span class="badge bg-danger">Cancelled</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>John Doe</td>
+                              <td>Rs. 6700</td>
+                              <td>
+                                <span class="badge bg-danger">Cancelled</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>John Doe</td>
+                              <td>Rs. 6700</td>
+                              <td>
+                                <span class="badge bg-danger">Cancelled</span>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 overflow-y-scroll" style="height: 50vh">
+                    <div class="card bg-white text-dark shadow-lg">
+                      <div class="card-body">
+                        <h6>Recent Products</h6>
+                        <hr />
+                        <table class="table table-borderless">
+                          <thead>
+                            <tr>
+                              <th>Product ID</th>
+                              <th>Product Name</th>
+                              <th>Price</th>
+                              <th>Stock</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>1</td>
+                              <td>Shoe</td>
+                              <td>Rs. 6700</td>
+                              <td>10</td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>Shoe</td>
+                              <td>Rs. 6700</td>
+                              <td>10</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>Shoe</td>
+                              <td>Rs. 6700</td>
+                              <td>10</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>Shoe</td>
+                              <td>Rs. 6700</td>
+                              <td>10</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>Shoe</td>
+                              <td>Rs. 6700</td>
+                              <td>10</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>Shoe</td>
+                              <td>Rs. 6700</td>
+                              <td>10</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>Shoe</td>
+                              <td>Rs. 6700</td>
+                              <td>10</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>Shoe</td>
+                              <td>Rs. 6700</td>
+                              <td>10</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>Shoe</td>
+                              <td>Rs. 6700</td>
+                              <td>10</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
       </section>
     </main>
     <script src="assets/bootstrap-5.3.2-dist/js/code.jquery.com_jquery-3.7.1.min.js"></script>
     <script src="assets/bootstrap-5.3.2-dist/js/bootstrap.min.js"></script>
-    <script src="assets/js_files/validation.js"></script>
-    <script src="assets/js_files/main.js"></script>
+    <script src="assets/utill/validation.js"></script>
+    <script src="assets/controllers/logincontroller.js"></script>
   </body>
 </html>
