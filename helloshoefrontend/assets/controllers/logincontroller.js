@@ -30,16 +30,15 @@ $("#signInBtn").click(function (e) {
       success: function (res) {
         console.log(res);
         localStorage.setItem("user", JSON.stringify(res));
-        if (
-          JSON.parse(localStorage.getItem("user")).role === "ADMIN" ||
-          JSON.parse(localStorage.getItem("user")).role === "SUPER_ADMIN"
-        ) {
-          window.location.href = "page/admin/";
-        } else if (JSON.parse(localStorage.getItem("user")).role === "USER") {
+        var userRole = res.role;
+        if (userRole === "ADMIN_USER" || userRole === "USER") {
           document.getElementById("login-wrapper").style.display = "none";
           document.getElementById("dboard-wrapper").style.display = "flex";
+          if (userRole !== "ADMIN_USER") {
+            $("#adminButton").hide();
+          }
         } else {
-          alert("Invalid user role!");
+          $("#errorMessage").text("Invalid User");
         }
       },
       error: function (res) {
