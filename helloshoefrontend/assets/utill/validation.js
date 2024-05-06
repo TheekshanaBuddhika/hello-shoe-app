@@ -1,3 +1,6 @@
+document.getElementById("login-wrapper").style.display = "flex";
+document.getElementById("dboard-wrapper").style.display = "none";
+
 $(document).ready(function () {
   $("#userEmail").keyup(function () {
     validateEmail();

@@ -28,6 +28,7 @@
     >
       <!-- login page -->
       <section
+        id="login-wrapper"
         class="login-form-wrapper container-fluid h-100 w-100 m-0 p-0 position-relative d-flex flex-row bg-white z-0"
       >
         <div
@@ -157,11 +158,12 @@
       </section>
       <!-- Dashboard -->
       <section
-        class="dashboard-wrapper container-fluid h-100 w-100 m-0 p-0 position-relative d-flex flex-row bg-white d-flex align-items-center justify-content-center flex-column"
+        id="dboard-wrapper"
+        class="dashboard-wrapper container-fluid h-100 w-100 m-0 p-0 position-relative flex-row bg-white align-items-center justify-content-center flex-column"
       >
         <!-- header -->
         <nav
-          class="sb-topnav navbar navbar-expand bg-wite position-absolute top-0 w-100 justify-content-between align-items-center"
+          class="sb-topnav navbar navbar-expand bg-wite position-absolute top-0 w-100 justify-content-between align-items-center shadow-sm z-1"
           style="height: 8%"
         >
           <!-- Navbar Brand-->
@@ -199,7 +201,7 @@
 
         <!-- Content Form -->
         <div
-          class="dashboard-detail-wrapper position-absolute d-flex flex-row bottom-0 start-0 end-0 bg-info"
+          class="dashboard-detail-wrapper position-absolute d-flex flex-row bottom-0 start-0 end-0 bg-white"
           style="height: 92%"
         >
           <!-- Sidebar  -->
@@ -296,8 +298,15 @@
             </div>
           </nav>
           <!----------------------------------------------------------- content containers  ---------------------------------------------------------------->
-          <div id="Admin_board" class="container-fluid m-0 p-2 w-100">
-            <section>
+          <section
+            id="Content_wrapper"
+            class="container-fluid m-0 p-2 w-100 h-100 overflow-auto"
+          >
+            <!-- admin -->
+            <section
+              id="admin_content"
+              class="container-fluid m-0 p-0 position-relative"
+            >
               <div class="container p-2">
                 <!--                <img id="login-img" src="../../assets/images/admin-bg.jpg" class="img-fluid w-100 position-fixed" alt="">-->
                 <div class="row flex-nowrap w-100 p-2">
@@ -552,7 +561,384 @@
                 </div>
               </div>
             </section>
-          </div>
+            <!-- inventory -->
+            <section
+              id="inventory_content"
+              class="container-fluid m-0 p-4 position-relative"
+            >
+              <div class="d-flex justify-content-end mt-3">
+                <button class="btn btn-primary" id="btn-open-model">
+                  Add New Inventory
+                </button>
+              </div>
+              <table
+                id="tbl-inventory"
+                class="table table-hover table-striped"
+                style="width: 100%"
+              >
+                <thead class="bg-primary mb-2">
+                  <tr
+                    class="bg-primary rounded-2 text-sm-center"
+                    style="font-size: 12px"
+                  >
+                    <th class="text-center bg-primary text-white"></th>
+                    <th class="text-center bg-primary text-white">Item Code</th>
+                    <th class="text-center bg-primary text-white">Name</th>
+                    <th class="text-center bg-primary text-white">Size</th>
+                    <th class="text-center bg-primary text-white">Qty</th>
+                    <th class="text-center bg-primary text-white">
+                      Supplier Code
+                    </th>
+                    <th class="text-center bg-primary text-white">
+                      Supplier name
+                    </th>
+                    <th class="text-center bg-primary text-white">Brand</th>
+                    <th class="text-center bg-primary text-white">type</th>
+                    <th class="text-center bg-primary text-white">Discount</th>
+                    <th class="text-center bg-primary text-white">gender</th>
+                    <th class="text-center bg-primary text-white">
+                      <small>price - Sale</small>
+                    </th>
+                    <th class="text-center bg-primary text-white">
+                      <small>price -Buy</small>
+                    </th>
+                    <th class="text-center bg-primary text-white">Expected</th>
+                    <th class="text-center bg-primary text-white">Profit</th>
+                    <th class="text-center bg-primary text-white">Status</th>
+                    <th class="text-center bg-primary text-white">Action</th>
+                  </tr>
+                </thead>
+                <tbody
+                  class="mt-5"
+                  id="tbl-item-body"
+                  style="font-size: 13px"
+                ></tbody>
+                <tfoot>
+                  <tr
+                    class="bg-primary rounded-2 text-sm-center"
+                    style="font-size: 12px"
+                  >
+                    <th class="text-center"></th>
+                    <th class="text-center">Item Code</th>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Size</th>
+                    <th class="text-center">Qty</th>
+                    <th class="text-center">Supplier Code</th>
+                    <th class="text-center">Supplier name</th>
+                    <th class="text-center">Brand</th>
+                    <th class="text-center">type</th>
+                    <th class="text-center">Discount</th>
+                    <th class="text-center">gender</th>
+                    <th class="text-center"><small>price - Sale</small></th>
+                    <th class="text-center"><small>price -Buy</small></th>
+                    <th class="text-center">Expected Profit</th>
+                    <th class="text-center">Profit margin</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Action</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </section>
+            <!-- refund -->
+            <section
+              id="refund_content"
+              class="container-fluid m-0 position-relative"
+            >
+              <section class="container">
+                <div class="row">
+                  <div class="col-12">
+                    <section
+                      class="card overflow-y-scroll"
+                      style="height: 50vh"
+                    >
+                      <div
+                        class="card-header bg-warning w-100 d-flex justify-content-sm-between"
+                      >
+                        <h6 class="text-dark">Refunded List</h6>
+                        <input
+                          type="text"
+                          class="form-control w-25"
+                          placeholder="Search"
+                        />
+                      </div>
+                      <div class="card-body">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr style="font-size: 15px">
+                              <th scope="col">Refund ID</th>
+                              <th scope="col">Order ID</th>
+                              <th scope="col">Customer ID</th>
+                              <th scope="col">Product ID</th>
+                              <th scope="col">Quantity</th>
+                              <th scope="col">Refund Date</th>
+                              <th scope="col">Refund Reason</th>
+                              <th scope="col">Refund Status</th>
+                            </tr>
+                          </thead>
+                          <tbody style="font-size: 14px">
+                            <tr>
+                              <th scope="row">1</th>
+                              <td>1</td>
+                              <td>1</td>
+                              <td>1</td>
+                              <td>1</td>
+                              <td>2021-10-10</td>
+                              <td>Not satisfied</td>
+                              <td>Refunded</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">2</th>
+                              <td>2</td>
+                              <td>2</td>
+                              <td>2</td>
+                              <td>2</td>
+                              <td>2021-10-10</td>
+                              <td>Not satisfied</td>
+                              <td>Refunded</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">3</th>
+                              <td>3</td>
+                              <td>3</td>
+                              <td>3</td>
+                              <td>3</td>
+                              <td>2021-10-10</td>
+                              <td>Not satisfied</td>
+                              <td>Refunded</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">4</th>
+                              <td>4</td>
+                              <td>4</td>
+                              <td>4</td>
+                              <td>4</td>
+                              <td>2021-10-10</td>
+                              <td>Not satisfied</td>
+                              <td>Refunded</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </div>
+              </section>
+            </section>
+            <!-- supplier -->
+            <section
+              id="supplier_content"
+              class="container-fluid m-0 p-0 position-relative"
+            >
+              <section class="p-3">
+                <section
+                  class="mt-2 container-fluid d-flex justify-content-end"
+                >
+                  <button
+                    class="btn btn-sm btn-primary"
+                    id="btn-add-modal"
+                    style="height: 35px"
+                    type="button"
+                  >
+                    Add Supplier
+                  </button>
+                </section>
+                <section class="container-fluid">
+                  <table
+                    id="tbl-supplier"
+                    class="table table-hover table-striped"
+                    style="width: 100%"
+                  >
+                    <thead class="bg-primary mb-2">
+                      <tr class="bg-primary rounded-2" style="font-size: 12px">
+                        <th class="text-center bg-primary text-white">
+                          SupplierCode
+                        </th>
+                        <th class="text-center bg-primary text-white">Name</th>
+                        <th class="text-center bg-primary text-white">
+                          Category
+                        </th>
+                        <th class="text-center bg-primary text-white">
+                          Contact 1
+                        </th>
+                        <th class="text-center bg-primary text-white">
+                          Contact 2
+                        </th>
+                        <th class="text-center bg-primary text-white">Email</th>
+                        <th class="text-center bg-primary text-white">
+                          Address
+                        </th>
+                        <th class="text-center bg-primary text-white">
+                          Action
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody
+                      class="mt-5"
+                      id="tbl-supplier-body"
+                      style="font-size: 13px"
+                    ></tbody>
+                    <tfoot>
+                      <tr style="font-size: 12px">
+                        <th class="text-center">SupplierCode</th>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Category</th>
+                        <th class="text-center">Contact 1</th>
+                        <th class="text-center">Contact 2</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Address</th>
+                        <th class="text-center">Action</th>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </section>
+              </section>
+            </section>
+            <!-- customers -->
+            <section
+              id="customer_content"
+              class="container-fluid m-0 p-0 position-relative"
+            >
+              <section class="container-fluid d-flex justify-content-end">
+                <button
+                  class="btn btn-sm btn-primary"
+                  id="btn-add-customer"
+                  style="height: 35px"
+                  type="button"
+                >
+                  Add loyalty Customer
+                </button>
+              </section>
+              <section class="p-3">
+                <table
+                  id="tbl-customer"
+                  class="table table-hover table-striped"
+                  style="width: 100%"
+                >
+                  <thead class="bg-primary mb-2">
+                    <tr class="bg-primary rounded-2" style="font-size: 13px">
+                      <th class="text-center bg-primary text-white">Name</th>
+                      <th class="text-center bg-primary text-white">ID</th>
+                      <th class="text-center bg-primary text-white">Gender</th>
+                      <th class="text-center bg-primary text-white">
+                        Join date
+                      </th>
+                      <th class="text-center bg-primary text-white">DOB</th>
+                      <th class="text-center bg-primary text-white">
+                        Last Perches
+                      </th>
+                      <th class="text-center bg-primary text-white">
+                        Total Points
+                      </th>
+                      <th class="text-center bg-primary text-white">
+                        Contact Number
+                      </th>
+                      <th class="text-center bg-primary text-white">Level</th>
+                      <th class="text-center bg-primary text-white">Email</th>
+                      <th class="text-center bg-primary text-white">Address</th>
+                      <th class="text-center bg-primary text-white">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    class="mt-5"
+                    id="tbl-customer-body"
+                    style="font-size: 12px"
+                  ></tbody>
+                  <tfoot>
+                    <tr style="font-size: 13px">
+                      <th class="text-center">ID</th>
+                      <th class="text-center">Name</th>
+                      <th class="text-center">Gender</th>
+                      <th class="text-center">Join date</th>
+                      <th class="text-center">DOB</th>
+                      <th class="text-center">Last Perches</th>
+                      <th class="text-center">Total Points</th>
+                      <th class="text-center">Contact Number</th>
+                      <th class="text-center">Level</th>
+                      <th class="text-center">Email</th>
+                      <th class="text-center">Address</th>
+                      <th class="text-center">Action</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </section>
+            </section>
+            <!-- employees -->
+            <section
+              id="employee_content"
+              class="container-fluid m-0 p-0 position-relative"
+            >
+              <section class="container-fluid">
+                <section
+                  class="d-flex justify-content-sm-between"
+                  style="height: 50px"
+                >
+                  <input
+                    type="text"
+                    class="form-control mt-3 w-50"
+                    placeholder="Search Employee"
+                  />
+                  <button
+                    class="btn btn-sm btn-primary mt-3"
+                    id="btn-employee-modal"
+                  >
+                    Add Employee
+                  </button>
+                </section>
+                <section class="row row-cols-md-3 mb-5" id="emp-cashier-row">
+                  <div class="col position-relative">
+                    <div class="card mt-3 p-2">
+                      <div class="employee-header"></div>
+                      <img
+                        src="https://github.com/mdo.png"
+                        width="100"
+                        class="rounded-circle m-auto z-3"
+                      />
+                      <small class="text-center">$EMP-07878</small>
+                      <h6 class="text-center">Savinda Jayasekara</h6>
+                      <small class="text-center">User</small>
+                      <div class="d-flex gap-5 justify-content-sm-between px-4">
+                        <small>Branch</small>
+                        <small>Matara</small>
+                      </div>
+                      <div class="d-flex gap-5 justify-content-sm-between px-4">
+                        <small>Date of Birth</small>
+                        <small>25/08/2002</small>
+                      </div>
+                      <div class="d-flex gap-5 justify-content-sm-between px-4">
+                        <small>Gender</small>
+                        <small>Male</small>
+                      </div>
+                      <div class="d-flex gap-5 justify-content-sm-between px-4">
+                        <small>Email</small>
+                        <small>thantrige32@gmail.com</small>
+                      </div>
+                      <div class="d-flex gap-5 justify-content-sm-between px-4">
+                        <small>Contact No</small>
+                        <small>07145826398</small>
+                      </div>
+                      <small class="text-center mt-2 text-dark"
+                        >27/2 , 'savinda' Sirisumana MW ,<br />Dickwall</small
+                      >
+                      <small class="text-danger">Emergency</small>
+                      <div
+                        class="d-flex gap-5 mt-2 justify-content-sm-between px-4"
+                      >
+                        <small>Ajith Prasanna</small>
+                        <small>0715682429</small>
+                      </div>
+                      <hr />
+                      <div class="d-flex mt-2 justify-content-end px-4">
+                        <button class="btn btn-sm btn-primary">Edit</button>
+                        <button class="btn btn-sm btn-danger ms-2">
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </section>
+            </section>
+          </section>
         </div>
       </section>
     </main>
