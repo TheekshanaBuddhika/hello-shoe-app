@@ -11,42 +11,42 @@ class user {
 $("#signInBtn").click(function (e) {
   e.preventDefault();
 
+  document.getElementById("login-wrapper").style.display = "none";
+  document.getElementById("dboard-wrapper").style.display = "flex";
+
   // Call validateForm function from validation.js
-  if (validateForm()) {
-    var email = $("#userEmail").val();
-    var password = $("#userPassword").val();
-    var data = {
-      email: email,
-      password: password,
-    };
+  // if (validateForm()) {
+  //   var email = $("#userEmail").val();
+  //   var password = $("#userPassword").val();
+  //   var data = {
+  //     email: email,
+  //     password: password,
+  //   };
 
-    console.log(data);
+  //   console.log(data);
 
-    $.ajax({
-      url: BASE_URL + "auth/login",
-      type: "POST",
-      contentType: "application/json",
-      data: JSON.stringify(data),
-      success: function (res) {
-        console.log(res);
-        localStorage.setItem("user", JSON.stringify(res));
-        var userRole = res.role;
-        if (userRole === "ADMIN_USER" || userRole === "USER") {
-          document.getElementById("login-wrapper").style.display = "none";
-          document.getElementById("dboard-wrapper").style.display = "flex";
-          if (userRole !== "ADMIN_USER") {
-            $("#adminButton").hide();
-          }
-        } else {
-          $("#errorMessage").text("Invalid User");
-        }
-      },
-      error: function (res) {
-        console.error("Login request failed:", res);
-      },
-    });
-  } else {
-    // Form validation failed, do nothing or show error message
-    console.log("Form validation failed.");
-  }
+  //   $.ajax({
+  //     url: BASE_URL + "auth/login",
+  //     type: "POST",
+  //     contentType: "application/json",
+  //     data: JSON.stringify(data),
+  //     success: function (res) {
+  //       console.log(res);
+  //       localStorage.setItem("user", JSON.stringify(res));
+  //       var userRole = res.role;
+  //       if (userRole === "ADMIN_USER" || userRole === "USER") {
+  //         document.getElementById("login-wrapper").style.display = "none";
+  //         document.getElementById("dboard-wrapper").style.display = "flex";
+  //         if (userRole !== "ADMIN_USER") {
+  //           $(".admin-item").hide();
+  //         }
+  //       } else {
+  //         $("#errorMessage").text("Invalid User");
+  //       }
+  //     },
+  //     error: function (res) {
+  //       console.error("Login request failed:", res);
+  //     },
+  //   });
+  // }
 });
