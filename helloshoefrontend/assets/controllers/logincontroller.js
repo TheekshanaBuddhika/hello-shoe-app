@@ -40,6 +40,7 @@ $("#signInBtn").click(function (e) {
   //         if (userRole !== "ADMIN_USER") {
   //           $(".admin-item").hide();
   //         }
+  getUserDetails();
   //       } else {
   //         $("#errorMessage").text("Invalid User");
   //       }
