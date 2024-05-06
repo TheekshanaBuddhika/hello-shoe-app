@@ -21,35 +21,33 @@ $("#signInBtn").click(function (e) {
     };
 
     console.log(data);
-    document.getElementById("login-wrapper").style.display = "none";
-    document.getElementById("dboard-wrapper").style.display = "flex";
+
+    $.ajax({
+      url: BASE_URL + "auth/login",
+      type: "POST",
+      contentType: "application/json",
+      data: JSON.stringify(data),
+      success: function (res) {
+        console.log(res);
+        localStorage.setItem("user", JSON.stringify(res));
+        if (
+          JSON.parse(localStorage.getItem("user")).role === "ADMIN" ||
+          JSON.parse(localStorage.getItem("user")).role === "SUPER_ADMIN"
+        ) {
+          window.location.href = "page/admin/";
+        } else if (JSON.parse(localStorage.getItem("user")).role === "USER") {
+          document.getElementById("login-wrapper").style.display = "none";
+          document.getElementById("dboard-wrapper").style.display = "flex";
+        } else {
+          alert("Invalid user role!");
+        }
+      },
+      error: function (res) {
+        console.error("Login request failed:", res);
+      },
+    });
   } else {
     // Form validation failed, do nothing or show error message
     console.log("Form validation failed.");
   }
 });
-
-// $.ajax({
-//   url: BASE_URL + "auth/login",
-//   type: "POST",
-//   contentType: "application/json",
-//   data: JSON.stringify(data),
-//   success: function (res) {
-//     console.log(res);
-//     localStorage.setItem("user", JSON.stringify(res));
-//     (result) => {
-//       if (
-//         JSON.parse(localStorage.getItem("user")).role === "ADMIN" ||
-//         JSON.parse(localStorage.getItem("user")).role === "SUPER_ADMIN"
-//       ) {
-//         window.location.href = "page/admin/";
-//       } else if (
-//         JSON.parse(localStorage.getItem("user")).role === "USER"
-//       ) {
-//       } else {
-//         alert("invalid !");
-//       }
-//     };
-//   },
-//   error: function (res) {},
-// });
