@@ -240,7 +240,7 @@
                 id="side_bar_option"
               >
                 <li class="admin-item nav-item nav-btn">
-                  <a href="index.html" class="nav-link nv-btn">
+                  <a href="#" class="nav-link nv-btn">
                     <svg class="bi me-2" width="16" height="20">
                       <i class="fas fa-user fa-xl fa-fw"></i>
                     </svg>
@@ -250,7 +250,7 @@
                   </a>
                 </li>
                 <li class="pos-item mt-3 nav-btn">
-                  <a href="employee.html" class="nav-link">
+                  <a a href="#" class="nav-link">
                     <svg class="bi me-2" width="16" height="20">
                       <i class="fas fa-money-bill-alt fa-lg fa-xl"></i>
                     </svg>
@@ -258,7 +258,7 @@
                   </a>
                 </li>
                 <li class="inventory-item mt-3 nav-btn">
-                  <a href="inventory.html" class="nav-link">
+                  <a a href="#" class="nav-link">
                     <svg class="bi me-2" width="16" height="20">
                       <i class="fas fa-store fa-xl fa-fw"></i>
                     </svg>
@@ -269,7 +269,7 @@
                 </li>
 
                 <li class="refund-item mt-3 nav-btn">
-                  <a href="refund.html" class="nav-link">
+                  <a a href="#" class="nav-link">
                     <svg class="bi me-2" width="16" height="20">
                       <i class="fas fa-exchange-alt fa-xl fa-fw"></i>
                     </svg>
@@ -279,7 +279,7 @@
                   </a>
                 </li>
                 <li class="supplier-item mt-3 nav-btn">
-                  <a href="supplier.html" class="nav-link">
+                  <a a href="#" class="nav-link">
                     <svg class="bi me-2" width="16" height="20">
                       <i class="fas fa-people-carry fa-xl fa-fw"></i>
                     </svg>
@@ -289,7 +289,7 @@
                   </a>
                 </li>
                 <li class="customer-item mt-3 nav-btn">
-                  <a href="customers.html" class="nav-link">
+                  <a a href="#" class="nav-link">
                     <svg class="bi me-2" width="16" height="20">
                       <i class="fas fa-address-book fa-xl fa-fw"></i>
                     </svg>
@@ -299,7 +299,7 @@
                   </a>
                 </li>
                 <li class="employee-item mt-3 nav-btn">
-                  <a href="employee.html" class="nav-link">
+                  <a a href="#" class="nav-link">
                     <svg class="bi me-2" width="16" height="20">
                       <i class="fas fa-users fa-xl fa-fw"></i>
                     </svg>
@@ -323,7 +323,10 @@
             >
               <div class="container p-2">
                 <!-- datepicker -->
-                <div class="container w-25" style="margin-right: -2.5vw">
+                <div
+                  class="container p-0 w-25 position-relative d-inline"
+                  style="left: 810px"
+                >
                   <label for="datepicker">Choose a date:</label>
                   <input type="date" id="datepicker" />
                 </div>
@@ -405,11 +408,15 @@
                 <div class="row flex-nowrap w-100 p-2 mt-5">
                   <div class="col-12 rounded-2">
                     <div
-                      class="card bg-transparent text-dark shadow-lg d-flex flex-row align-items-center"
+                      class="card bg-dark-subtle text-dark shadow-lg d-flex flex-row align-items-center border border-white border-5"
                     >
                       <div
-                        class="card-body col-6 text-center fw-semibold"
-                        style="font-size: 5em; font-family: fantasy"
+                        class="card-body col-6 text-center text-white fw-semibold bg-dark shadow-lg me-3 rounded-end-2 d-flex align-items-center justify-content-center"
+                        style="
+                          font-size: 5em;
+                          font-family: fantasy;
+                          height: 150px;
+                        "
                       >
                         Most Selling Shoe
                       </div>
@@ -425,9 +432,9 @@
                 </div>
 
                 <!--sales table  -->
-                <div class="row mt-5 w-100 flex-nowrap p-2">
-                  <div class="col-md-6 overflow-y-scroll" style="height: 50vh">
-                    <div class="card bg-white text-dark shadow-lg">
+                <div class="row mt-5 w-100 flex-nowrap p-2 h-50">
+                  <div class="col-md-6 overflow-y-auto h-100">
+                    <div class="card bg-white text-dark shadow-sm">
                       <div class="card-body">
                         <h6>Recent Orders</h6>
                         <hr />
@@ -527,8 +534,8 @@
                     </div>
                   </div>
 
-                  <div class="col-md-6 overflow-y-scroll" style="height: 50vh">
-                    <div class="card bg-white text-dark shadow-lg">
+                  <div class="col-md-6 overflow-y-auto h-100">
+                    <div class="card bg-white text-dark shadow-sm">
                       <div class="card-body">
                         <h6>Recent Products</h6>
                         <hr />
@@ -603,6 +610,84 @@
                   </div>
                 </div>
               </div>
+            </section>
+            <!-- sale -->
+            <section
+              id="sale_content"
+              class="container-fluid m-0 p-4 position-relative"
+            >
+              <div class="d-flex justify-content-end mt-3">
+                <button class="btn btn-primary" id="btn-open-model">
+                  Add New Inventory
+                </button>
+              </div>
+              <table
+                id="tbl-inventory"
+                class="table table-hover table-striped"
+                style="width: 100%"
+              >
+                <thead class="bg-primary mb-2">
+                  <tr
+                    class="bg-primary rounded-2 text-sm-center"
+                    style="font-size: 12px"
+                  >
+                    <th class="text-center bg-primary text-white"></th>
+                    <th class="text-center bg-primary text-white">Item Code</th>
+                    <th class="text-center bg-primary text-white">Name</th>
+                    <th class="text-center bg-primary text-white">Size</th>
+                    <th class="text-center bg-primary text-white">Qty</th>
+                    <th class="text-center bg-primary text-white">
+                      Supplier Code
+                    </th>
+                    <th class="text-center bg-primary text-white">
+                      Supplier name
+                    </th>
+                    <th class="text-center bg-primary text-white">Brand</th>
+                    <th class="text-center bg-primary text-white">type</th>
+                    <th class="text-center bg-primary text-white">Discount</th>
+                    <th class="text-center bg-primary text-white">gender</th>
+                    <th class="text-center bg-primary text-white">
+                      <small>price - Sale</small>
+                    </th>
+                    <th class="text-center bg-primary text-white">
+                      <small>price -Buy</small>
+                    </th>
+                    <th class="text-center bg-primary text-white">Expected</th>
+                    <th class="text-center bg-primary text-white">Profit</th>
+                    <th class="text-center bg-primary text-white">Status</th>
+                    <th class="text-center bg-primary text-white">Action</th>
+                  </tr>
+                </thead>
+                <tbody
+                  class="mt-5"
+                  id="tbl-item-body"
+                  style="font-size: 13px"
+                ></tbody>
+                <tfoot>
+                  <tr
+                    class="bg-primary rounded-2 text-sm-center"
+                    style="font-size: 12px"
+                  >
+                    <th class="text-center"></th>
+                    <th class="text-center">Item Code</th>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Size</th>
+                    <th class="text-center">Qty</th>
+                    <th class="text-center">Supplier Code</th>
+                    <th class="text-center">Supplier name</th>
+                    <th class="text-center">Brand</th>
+                    <th class="text-center">type</th>
+                    <th class="text-center">Discount</th>
+                    <th class="text-center">gender</th>
+                    <th class="text-center"><small>price - Sale</small></th>
+                    <th class="text-center"><small>price -Buy</small></th>
+                    <th class="text-center">Expected Profit</th>
+                    <th class="text-center">Profit margin</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Action</th>
+                  </tr>
+                </tfoot>
+              </table>
             </section>
             <!-- inventory -->
             <section

@@ -35,10 +35,11 @@ $("#signInBtn").click(function (e) {
   //       localStorage.setItem("user", JSON.stringify(res));
   //       var userRole = res.role;
   //       if (userRole === "ADMIN_USER" || userRole === "USER") {
-  //         document.getElementById("login-wrapper").style.display = "none";
-  //         document.getElementById("dboard-wrapper").style.display = "flex";
+  //       $("#login-wrapper").css("display", "flex");
   //         if (userRole !== "ADMIN_USER") {
   //           $(".admin-item").hide();
+  $("#admin_content").css("display", "block");
+
   //         }
   getUserDetails();
   //       } else {
