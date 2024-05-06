@@ -614,14 +614,46 @@
             <!-- sale -->
             <section
               id="sale_content"
-              class="container-fluid m-0 p-4 position-relative"
+              class="container-fluid m-0 p-4 position-relative bg-info-subtle h-100"
             >
-              <div class="d-flex justify-content-end mt-3">
-                <button class="btn btn-primary" id="btn-open-model">
-                  Add New Inventory
-                </button>
+              <div class="d-flex justify-content-between mt-3">
+                <div class="d-flex w-25">
+                  <span
+                    id="customer-pos-name"
+                    class="fs-3 fw-semibold text-center text-dark"
+                    style="font-family: Verdana, Geneva, Tahoma, sans-serif"
+                    >Welcome kamal</span
+                  >
+                </div>
+                <!-- customer search -->
+                <div class="d-flex w-25">
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control w-75 rounded-end-0"
+                      placeholder="Customer id"
+                    />
+                    <button
+                      class="btn btn-outline-primary rounded-start-0 w-25"
+                      id="customer-search"
+                    >
+                      <i class="fas fa-search fa-sm fa-fw"></i>
+                    </button>
+                  </div>
+                </div>
               </div>
-              <table
+              <div
+                class="row w-100 mt-3 d-flex flex-row m-1"
+                style="height: 90%"
+              >
+                <div
+                  class="customer-item-detail col-9 border border-2 shadow-sm rounded-2"
+                ></div>
+                <div
+                  class="payment col-3 border border-2 shadow-sm rounded-2"
+                ></div>
+              </div>
+              <!-- <table
                 id="tbl-inventory"
                 class="table table-hover table-striped"
                 style="width: 100%"
@@ -687,7 +719,7 @@
                     <th class="text-center">Action</th>
                   </tr>
                 </tfoot>
-              </table>
+              </table> -->
             </section>
             <!-- inventory -->
             <section
