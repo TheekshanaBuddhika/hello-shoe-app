@@ -11,8 +11,8 @@ $(document).ready(function () {
   $("#employee_content").hide();
 
   //   payment
-  $("#cash").hide();
-  $("#card").css("display", "flex");
+  $("#card").hide();
+  $("#cash").css("display", "flex");
 
   // Click event handler for employee-item
   $(".employee-item").click(function () {
