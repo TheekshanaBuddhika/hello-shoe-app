@@ -914,7 +914,7 @@
                   <!-- cash payment -->
                   <div
                     id="cash"
-                    class="col-12 card border border-1 mt-3 p-2 d-flex flex-column align-items-center"
+                    class="col-12 card border border-1 mt-3 p-2 flex-column align-items-center"
                   >
                     <!-- given cash -->
                     <div class="col-10">
@@ -934,20 +934,54 @@
                     </div>
                     <!-- balance -->
                     <div
-                      class="mb-3 col-12 d-flex flex-row align-items-center justify-content-start card mt-2 border border-0 border-bottom border-2 rounded-0 flex-wrap"
+                      class="mb-3 col-10 d-flex flex-row align-items-center justify-content-start card mt-2 border border-0 rounded-0 flex-wrap"
                     >
                       <label
-                        for="total-amount"
-                        class="col-12 col-form-label fs-3 fw-semibold text-dark"
-                        >Total Amount</label
+                        for="balance-amount"
+                        class="col-12 col-form-label fs-5 fw-bold text-dark"
+                        >Balance Amount</label
                       >
                       <div class="col-12">
                         <input
                           type="text"
                           readonly
-                          class="form-control-plaintext fs-3 fw-bold text-dark text-center"
-                          id="total-amount"
+                          class="form-control-plaintext fs-5 fw-bold text-dark text-center"
+                          id="balance-amount"
                           value="5000"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <!-- card payment-->
+                  <div
+                    id="card"
+                    class="col-12 card border border-1 mt-3 p-2 flex-column align-items-center"
+                  >
+                    <!-- given card number -->
+                    <div class="col-10">
+                      <div class="mb-3">
+                        <label for="card-num-id" class="form-label fs-5 fw-bold"
+                          >Card Number</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="card-num-id"
+                          placeholder="Card Number"
+                        />
+                      </div>
+                    </div>
+                    <!-- bank name -->
+                    <div class="col-10">
+                      <div class="mb-3">
+                        <label for="bank-id" class="form-label fs-5 fw-bold"
+                          >Bank Name</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="bank-id"
+                          placeholder="Cash amonut"
                         />
                       </div>
                     </div>
