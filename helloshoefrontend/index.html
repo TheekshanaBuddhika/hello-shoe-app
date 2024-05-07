@@ -897,16 +897,60 @@
                       />
                     </div>
                   </div>
+                  <!--  payment method chooser -->
                   <div class="form-check form-switch">
                     <input
                       class="form-check-input"
                       type="checkbox"
                       role="switch"
-                      id="flexSwitchCheckDefault"
+                      id="payment-method-checkbox"
                     />
-                    <label class="form-check-label" for="flexSwitchCheckDefault"
-                      >Default switch checkbox input</label
+                    <label
+                      class="form-check-label"
+                      for="payment-method-checkbox"
+                      >Card Payment</label
                     >
+                  </div>
+                  <!-- cash payment -->
+                  <div
+                    id="cash"
+                    class="col-12 card border border-1 mt-3 p-2 d-flex flex-column align-items-center"
+                  >
+                    <!-- given cash -->
+                    <div class="col-10">
+                      <div class="mb-3">
+                        <label
+                          for="cash-text-id"
+                          class="form-label fs-5 fw-bold"
+                          >Cash</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="cash-text-id"
+                          placeholder="Cash amonut"
+                        />
+                      </div>
+                    </div>
+                    <!-- balance -->
+                    <div
+                      class="mb-3 col-12 d-flex flex-row align-items-center justify-content-start card mt-2 border border-0 border-bottom border-2 rounded-0 flex-wrap"
+                    >
+                      <label
+                        for="total-amount"
+                        class="col-12 col-form-label fs-3 fw-semibold text-dark"
+                        >Total Amount</label
+                      >
+                      <div class="col-12">
+                        <input
+                          type="text"
+                          readonly
+                          class="form-control-plaintext fs-3 fw-bold text-dark text-center"
+                          id="total-amount"
+                          value="5000"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
