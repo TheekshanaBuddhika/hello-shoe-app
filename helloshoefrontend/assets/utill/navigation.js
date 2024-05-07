@@ -10,10 +10,6 @@ $(document).ready(function () {
   $("#customer_content").hide();
   $("#employee_content").hide();
 
-  //   payment
-  $("#card").hide();
-  $("#cash").css("display", "flex");
-
   // Click event handler for employee-item
   $(".employee-item").click(function () {
     $("#admin_content").hide();

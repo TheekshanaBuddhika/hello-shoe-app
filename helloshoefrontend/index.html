@@ -906,7 +906,7 @@
                       id="payment-method-checkbox"
                     />
                     <label
-                      class="form-check-label"
+                      class="form-check-label text-dark fs-6 fw-bold"
                       for="payment-method-checkbox"
                       >Card Payment</label
                     >
@@ -972,18 +972,31 @@
                       </div>
                     </div>
                     <!-- bank name -->
-                    <div class="col-10">
-                      <div class="mb-3">
+                    <div
+                      class="mb-1 col-10 d-flex flex-row align-items-center justify-content-start card mt-3 border border-0 rounded-0 flex-wrap"
+                    >
+                      <div class="mb-3 w-100">
                         <label for="bank-id" class="form-label fs-5 fw-bold"
                           >Bank Name</label
                         >
                         <input
                           type="text"
-                          class="form-control"
+                          class="form-control w-100"
                           id="bank-id"
                           placeholder="Bank name"
                         />
                       </div>
+                    </div>
+                  </div>
+                  <!-- payment button -->
+                  <div
+                    class="col-12 mt-3 d-flex align-items-center justify-content-center"
+                  >
+                    <div class="mb-3 d-flex align-items-center col-6">
+                      <button type="button" class="btn btn-outline-dark w-100">
+                        <i class="fas fa-money-check fa-sm fa-fw"></i>
+                        Pay
+                      </button>
                     </div>
                   </div>
                 </div>
