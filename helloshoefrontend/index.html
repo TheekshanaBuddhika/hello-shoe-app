@@ -614,7 +614,7 @@
             <!-- sale -->
             <section
               id="sale_content"
-              class="container-fluid m-0 p-4 position-relative bg-info-subtle h-100"
+              class="container-fluid m-0 p-4 position-relative h-100"
             >
               <!-- sale title -->
               <div class="d-flex justify-content-between mt-3">
@@ -645,7 +645,7 @@
               </div>
               <!-- trading detail wrapper-->
               <div
-                class="row w-100 mt-3 d-flex flex-row ms-1 bg-black"
+                class="row w-100 mt-3 d-flex flex-row ms-1"
                 style="height: 90%"
               >
                 <!-- pos detail  -->
@@ -654,7 +654,7 @@
                 >
                   <!-- registerd customer detail -->
                   <div
-                    class="row w-100 h-auto d-flex flex-row align-items-center bg-warning"
+                    class="row w-100 h-auto d-flex flex-row align-items-center ps-3 mt-3"
                   >
                     <!-- customer name -->
                     <div
@@ -697,9 +697,9 @@
                     </div>
                   </div>
                   <!-- item detail && table -->
-                  <div class="row w-100 bg-danger">
+                  <div class="row w-100 pt-3 text-dark fs-6 fw-semibold">
                     <!-- item-code -->
-                    <div class="col-5">
+                    <div class="col-6">
                       <div class="mb-3">
                         <label for="pos-item-code" class="form-label"
                           >Item Code</label
@@ -713,7 +713,7 @@
                       </div>
                     </div>
                     <!-- item-name -->
-                    <div class="col-5">
+                    <div class="col-6">
                       <div class="mb-3">
                         <label for="pos-item-name" class="form-label"
                           >Item Name</label
@@ -727,35 +727,37 @@
                       </div>
                     </div>
                     <!-- item price -->
-                    <div class="col-5">
+                    <div class="col-4">
                       <div class="mb-3">
-                        <label for="pos-item-qty" class="form-label"
-                          >Item Quantity</label
+                        <label for="pos-item-price" class="form-label"
+                          >Unit Price</label
                         >
                         <input
                           type="text"
+                          readonly
                           class="form-control"
-                          id="pos-item-qty"
+                          id="pos-item-price"
                           placeholder="Item quantity"
                         />
                       </div>
                     </div>
                     <!-- item quantity on hand -->
-                    <div class="col-5">
+                    <div class="col-4">
                       <div class="mb-3">
-                        <label for="pos-item-qty" class="form-label"
-                          >Item Quantity</label
+                        <label for="pos-item-available" class="form-label"
+                          >Available Quantity</label
                         >
                         <input
                           type="text"
+                          readonly
                           class="form-control"
-                          id="pos-item-qty"
-                          placeholder="Item quantity"
+                          id="pos-item-available"
+                          placeholder="Available quantity"
                         />
                       </div>
                     </div>
                     <!-- item quantity -->
-                    <div class="col-5">
+                    <div class="col-4">
                       <div class="mb-3">
                         <label for="pos-item-qty" class="form-label"
                           >Item Quantity</label
@@ -768,80 +770,116 @@
                         />
                       </div>
                     </div>
+                    <!-- btn container -->
+                    <div
+                      class="col-12 d-flex align-items-center justify-content-end p-0 mt-3"
+                    >
+                      <div class="col-3 p-0">
+                        <button
+                          id="clear-btn"
+                          class="btn btn-outline-dark ms-3"
+                        >
+                          <i class="fa fa-trash" aria-hidden="true"></i>
+                          Clear
+                        </button>
+                        <button
+                          id="add-cart-btn"
+                          class="btn btn-outline-dark ms-1"
+                        >
+                          <i class="fas fa-cart-plus fa-sm fa-fw"></i>
+                          Add to Cart
+                        </button>
+                      </div>
+                    </div>
+                    <!-- item container table -->
+                    <table
+                      id="tbl-pos"
+                      class="table table-hover table-striped mt-3 ms-3"
+                      style="width: 100%"
+                    >
+                      <thead class="bg-dark-subtle mb-2">
+                        <tr
+                          class="rounded-2 text-sm-center"
+                          style="font-size: 12px"
+                        >
+                          <th class="text-center bg-dark-subtle text-dark">
+                            #
+                          </th>
+                          <th class="text-center bg-dark-subtle text-dark">
+                            Item Code
+                          </th>
+                          <th class="text-center bg-dark-subtle text-dark">
+                            Name
+                          </th>
+                          <th class="text-center bg-dark-subtle text-dark">
+                            Size
+                          </th>
+                          <th class="text-center bg-dark-subtle text-dark">
+                            Qty
+                          </th>
+                          <th class="text-center bg-dark-subtle text-dark">
+                            Brand
+                          </th>
+                          <th class="text-center bg-dark-subtle text-dark">
+                            Total
+                          </th>
+                          <th class="text-center bg-dark-subtle text-dark">
+                            Action
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody
+                        class="mt-5"
+                        id="tbl-pos-body"
+                        style="font-size: 13px"
+                      ></tbody>
+                      <tfoot>
+                        <tr
+                          class="bg-primary rounded-2 text-sm-center"
+                          style="font-size: 12px"
+                        >
+                          <th class="text-center"></th>
+                          <th class="text-center">Item Code</th>
+                          <th class="text-center">Name</th>
+                          <th class="text-center">Size</th>
+                          <th class="text-center">Qty</th>
+                          <th class="text-center">Brand</th>
+                          <th class="text-center">Total</th>
+                          <td class="">
+                            <button
+                              id="clear-pos-table"
+                              class="btn btn-outline-dark me-3 btn-sm"
+                            >
+                              <i class="fas fa-recycle fa-sm fa-fw"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      </tfoot>
+                    </table>
                   </div>
                 </div>
-                <div
-                  class="payment col-3 border border-2 shadow-sm rounded-2"
-                ></div>
+                <div class="payment col-3 border border-2 shadow-sm rounded-2">
+                  <!-- order id -->
+                  <div
+                    class="mb-3 col-12 d-flex flex-row align-items-center justify-content-start card mt-2 border border-0"
+                  >
+                    <label
+                      for="order-id"
+                      class="col-4 col-form-label fs-5 fw-semibold text-dark"
+                      >Order Id</label
+                    >
+                    <div class="col-8">
+                      <input
+                        type="text"
+                        readonly
+                        class="form-control-plaintext fs-5 fw-semibold text-dark"
+                        id="order-id"
+                        value=""
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
-
-              <!-- <table
-                id="tbl-inventory"
-                class="table table-hover table-striped"
-                style="width: 100%"
-              >
-                <thead class="bg-primary mb-2">
-                  <tr
-                    class="bg-primary rounded-2 text-sm-center"
-                    style="font-size: 12px"
-                  >
-                    <th class="text-center bg-primary text-white"></th>
-                    <th class="text-center bg-primary text-white">Item Code</th>
-                    <th class="text-center bg-primary text-white">Name</th>
-                    <th class="text-center bg-primary text-white">Size</th>
-                    <th class="text-center bg-primary text-white">Qty</th>
-                    <th class="text-center bg-primary text-white">
-                      Supplier Code
-                    </th>
-                    <th class="text-center bg-primary text-white">
-                      Supplier name
-                    </th>
-                    <th class="text-center bg-primary text-white">Brand</th>
-                    <th class="text-center bg-primary text-white">type</th>
-                    <th class="text-center bg-primary text-white">Discount</th>
-                    <th class="text-center bg-primary text-white">gender</th>
-                    <th class="text-center bg-primary text-white">
-                      <small>price - Sale</small>
-                    </th>
-                    <th class="text-center bg-primary text-white">
-                      <small>price -Buy</small>
-                    </th>
-                    <th class="text-center bg-primary text-white">Expected</th>
-                    <th class="text-center bg-primary text-white">Profit</th>
-                    <th class="text-center bg-primary text-white">Status</th>
-                    <th class="text-center bg-primary text-white">Action</th>
-                  </tr>
-                </thead>
-                <tbody
-                  class="mt-5"
-                  id="tbl-item-body"
-                  style="font-size: 13px"
-                ></tbody>
-                <tfoot>
-                  <tr
-                    class="bg-primary rounded-2 text-sm-center"
-                    style="font-size: 12px"
-                  >
-                    <th class="text-center"></th>
-                    <th class="text-center">Item Code</th>
-                    <th class="text-center">Name</th>
-                    <th class="text-center">Size</th>
-                    <th class="text-center">Qty</th>
-                    <th class="text-center">Supplier Code</th>
-                    <th class="text-center">Supplier name</th>
-                    <th class="text-center">Brand</th>
-                    <th class="text-center">type</th>
-                    <th class="text-center">Discount</th>
-                    <th class="text-center">gender</th>
-                    <th class="text-center"><small>price - Sale</small></th>
-                    <th class="text-center"><small>price -Buy</small></th>
-                    <th class="text-center">Expected Profit</th>
-                    <th class="text-center">Profit margin</th>
-                    <th class="text-center">Status</th>
-                    <th class="text-center">Action</th>
-                  </tr>
-                </tfoot>
-              </table> -->
             </section>
             <!-- inventory -->
             <section
