@@ -11,9 +11,6 @@ class user {
 $("#signInBtn").click(function (e) {
   e.preventDefault();
 
-  document.getElementById("login-wrapper").style.display = "none";
-  document.getElementById("dboard-wrapper").style.display = "flex";
-
   // Call validateForm function from validation.js
   // if (validateForm()) {
   //   var email = $("#userEmail").val();

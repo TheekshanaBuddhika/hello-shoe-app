@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="assets/stylesheets/mainstyle.css" />
     <link
       rel="icon"
-      href="assets/images/login/mainlogo.png"
+      href="assets/images/login/shoe_shop_logo.png"
       type="image/x-icon"
     />
     <link
@@ -24,7 +24,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
     />
-    <title>Hello Shoe</title>
+    <title>Happy Shoe</title>
   </head>
   <body>
     <main
@@ -39,7 +39,7 @@
           class="sign-in-form-wrapper h-100 w-50 bg-white d-flex justify-content-center align-items-center position-relative"
         >
           <div
-            class="inner-login-wrapper position-relative container d-flex flex-column p-3 h-75 w-50"
+            class="inner-login-wrapper position-relative container d-flex flex-column p-3 h-75 w-50 bg-black"
           >
             <div class="col h-100 align-items-center bg-white">
               <!-- Welcome logo -->
@@ -644,13 +644,10 @@
                 </div>
               </div>
               <!-- trading detail wrapper-->
-              <div
-                class="row w-100 mt-3 d-flex flex-row ms-1"
-                style="height: 90%"
-              >
+              <div class="row w-100 mt-3 d-flex bg-black" style="height: 90%">
                 <!-- pos detail  -->
                 <div
-                  class="customer-item-detail col-9 border border-2 shadow-sm rounded-2 bg-white"
+                  class="customer-item-detail col-9 border border-2 shadow-sm rounded-2 bg-warning p-0"
                 >
                   <!-- registerd customer detail -->
                   <div
@@ -698,78 +695,101 @@
                   </div>
                   <!-- item detail && table -->
                   <div class="row w-100 pt-3 text-dark fs-6 fw-semibold">
-                    <!-- item-code -->
-                    <div class="col-6">
-                      <div class="mb-3">
-                        <label for="pos-item-code" class="form-label"
-                          >Item Code</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="pos-item-code"
-                          placeholder="Search ..."
-                        />
+                    <div class="row w-100 p-0 m-0 position-relative bg-info">
+                      <div class="col-8 bg-danger p-0">
+                        <!-- item-code -->
+                        <div class="col-6">
+                          <div class="mb-3">
+                            <label for="pos-item-code" class="form-label"
+                              >Item Code</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="pos-item-code"
+                              placeholder="Search ..."
+                            />
+                          </div>
+                        </div>
+                        <!-- item-name -->
+                        <div class="col-6">
+                          <div class="mb-3">
+                            <label for="pos-item-name" class="form-label"
+                              >Item Name</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="pos-item-name"
+                              placeholder="Search ..."
+                            />
+                          </div>
+                        </div>
+
+                        <!-- item price -->
+                        <div class="col-6">
+                          <div class="mb-3">
+                            <label for="pos-item-price" class="form-label"
+                              >Unit Price</label
+                            >
+                            <input
+                              type="text"
+                              readonly
+                              class="form-control"
+                              id="pos-item-price"
+                              placeholder="Item quantity"
+                            />
+                          </div>
+                        </div>
+                        <!-- item quantity on hand -->
+                        <div class="col-6">
+                          <div class="mb-3">
+                            <label for="pos-item-available" class="form-label"
+                              >Available Quantity</label
+                            >
+                            <input
+                              type="text"
+                              readonly
+                              class="form-control"
+                              id="pos-item-available"
+                              placeholder="Available quantity"
+                            />
+                          </div>
+                        </div>
+                        <!-- item quantity -->
+                        <div class="col-6">
+                          <div class="mb-3">
+                            <label for="pos-item-qty" class="form-label"
+                              >Item Quantity</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="pos-item-qty"
+                              placeholder="Item quantity"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <!-- image container -->
+                      <div class="col-4">
+                        <!-- item-image -->
+                        <div class="col-12">
+                          <div class="mb-3">
+                            <label for="pos-item-name" class="form-label"
+                              >Item Name</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="pos-item-name"
+                              placeholder="Search ..."
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <!-- item-name -->
-                    <div class="col-6">
-                      <div class="mb-3">
-                        <label for="pos-item-name" class="form-label"
-                          >Item Name</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="pos-item-name"
-                          placeholder="Search ..."
-                        />
-                      </div>
-                    </div>
-                    <!-- item price -->
-                    <div class="col-4">
-                      <div class="mb-3">
-                        <label for="pos-item-price" class="form-label"
-                          >Unit Price</label
-                        >
-                        <input
-                          type="text"
-                          readonly
-                          class="form-control"
-                          id="pos-item-price"
-                          placeholder="Item quantity"
-                        />
-                      </div>
-                    </div>
-                    <!-- item quantity on hand -->
-                    <div class="col-4">
-                      <div class="mb-3">
-                        <label for="pos-item-available" class="form-label"
-                          >Available Quantity</label
-                        >
-                        <input
-                          type="text"
-                          readonly
-                          class="form-control"
-                          id="pos-item-available"
-                          placeholder="Available quantity"
-                        />
-                      </div>
-                    </div>
-                    <!-- item quantity -->
-                    <div class="col-4">
-                      <div class="mb-3">
-                        <label for="pos-item-qty" class="form-label"
-                          >Item Quantity</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="pos-item-qty"
-                          placeholder="Item quantity"
-                        />
-                      </div>
-                    </div>
+
                     <!-- btn container -->
                     <div
                       class="col-12 d-flex align-items-center justify-content-end p-0 mt-3"
