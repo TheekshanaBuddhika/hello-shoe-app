@@ -1,6 +1,5 @@
 package lk.ijse.helloshoebackend.controller;
 
-
 import lk.ijse.helloshoebackend.authentication.AuthenticationRequest;
 import lk.ijse.helloshoebackend.authentication.AuthenticationResponse;
 import lk.ijse.helloshoebackend.dto.UserDTO;
@@ -14,6 +13,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
+
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/auth")
