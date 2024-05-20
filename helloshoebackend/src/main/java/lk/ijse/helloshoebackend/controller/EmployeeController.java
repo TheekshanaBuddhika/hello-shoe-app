@@ -1,77 +1,50 @@
 package lk.ijse.helloshoebackend.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lk.ijse.helloshoebackend.dto.EmployeeDTO;
-import lk.ijse.helloshoebackend.dto.ResponseDTO;
 import lk.ijse.helloshoebackend.service.EmployeeService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.HashMap;
+import java.io.IOException;
 
-@RequestMapping("/api/v1/employee")
 @RestController
 @CrossOrigin(origins = "*")
+@RequestMapping("/api/v1/employee")
 public class EmployeeController {
-    private final PasswordEncoder passwordEncoder;
+
     private final EmployeeService employeeService;
 
-    @Autowired
-    public EmployeeController(PasswordEncoder passwordEncoder, EmployeeService employeeService) {
-        this.passwordEncoder = passwordEncoder;
+    public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
+
     @PostMapping
-    public ResponseDTO saveOrUpdateEmployee(@RequestBody EmployeeDTO employeeDTO){
-        try {
-            if (employeeDTO.getId() == null) {
-                employeeDTO.setPassword(passwordEncoder.encode(employeeDTO.getPassword()));
-                return new ResponseDTO("success", employeeService.saveEmployee(employeeDTO));
-            } else {
-                return new ResponseDTO("success", employeeService.updateEmployee(employeeDTO));
-            }
-        }catch (Exception e){
-            return new ResponseDTO(e.getMessage(), 500);
-        }
+    public ResponseEntity<?> saveEmployee(@RequestParam String employee, @RequestParam("image") MultipartFile file) throws IOException {
+        System.out.println(employee);
+        boolean isSave = employeeService.saveEmployee(new ObjectMapper().readValue(employee, EmployeeDTO.class),file);
+        return isSave ? ResponseEntity.ok("Employee Saved !") : ResponseEntity.badRequest().body("Failed to save the employee");
     }
 
-    @PutMapping("/dis/{id}")
-    public ResponseDTO disabledEmployee(@PathVariable String id) {
-        try {
-            return new ResponseDTO("success", employeeService.disable(id));
-        } catch (Exception e) {
-            return new ResponseDTO(e.getMessage(), 500);
-        }
+    @GetMapping("/admin")
+    public ResponseEntity<?> getAllEmployees(){
+        return ResponseEntity.ok(employeeService.getAllAdmins());
     }
 
-    @PutMapping("/enb/{id}")
-    public ResponseDTO enabledEmployee(@PathVariable String id) {
-        try {
-            return new ResponseDTO("success", employeeService.enable(id));
-        } catch (Exception e) {
-            return new ResponseDTO(e.getMessage(), 500);
-        }
+    @GetMapping("/cashier")
+    public ResponseEntity<?> getAllCashiers(){
+        return ResponseEntity.ok(employeeService.getAllCashiers());
     }
 
-    @GetMapping("/{id}")
-    public ResponseDTO getSelectedEmployee(@PathVariable String id) {
-        try {
-            HashMap<String, Object> map = new HashMap<>();
-            map.put("employee", employeeService.searchEmployee(id));
-            return new ResponseDTO("Employee found successfully",200, map);
-        } catch (Exception e) {
-            return new ResponseDTO(e.getMessage(), 500);
-        }
+    @GetMapping("/{empId}")
+    public ResponseEntity<?> getEmployee(@PathVariable("empId") String empId){
+        return ResponseEntity.ok(employeeService.getEmployee(empId));
     }
 
-    @GetMapping
-    public ResponseDTO getAllEmployees() {
-        try {
-            HashMap<String, Object> map = new HashMap<>();
-            map.put("employees", employeeService.getAllEmployees());
-            return new ResponseDTO("Employees found successfully",200, map);
-        } catch (Exception e) {
-            return new ResponseDTO(e.getMessage(), 500);
-        }
+    @PutMapping
+    public ResponseEntity<?> updateEmployee(@RequestParam("employee") String employee,@RequestParam("image") MultipartFile file) throws IOException {
+        boolean isUpdate = employeeService.updateEmployee(new ObjectMapper().readValue(employee, EmployeeDTO.class),file);
+        return isUpdate ? ResponseEntity.ok("Employee Updated !") : ResponseEntity.badRequest().body("Failed to update the employee");
     }
 }

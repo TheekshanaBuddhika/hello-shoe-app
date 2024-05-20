@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "ijse-hello-shoes",
+  "private_key_id": "517d655dd123477f5be71c2e30d6a25f5c02f966",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCsUT1QLha3jEeO\n2+cTFPw9bcIeXg9BEUiZ0OOHbAK2pMML4etL/O+C8jjM93z9bwRxVuTTsAl09ksT\nDQKi3J3cFfKa3mLZsvjwGmB6xDs95sX22nMpIXTx0HNWz/I4tgBqKpyHsnPR0wuZ\nIzJ8dCt8FtRK8PDAsLUXA9Ckhk+tPwDIO6ZpNAu0L38LpAiAtwuxRH5FnWXicZTG\nsY83nbSVCFjKAShEvylWSYtbuNPfnRqLTAOzM9vpOibCOHVsY3tOHhaVJeTlMp1F\nR61n5o7iyDVuG8+SI++8YdtntdkLXawp6ZJ2to9pAsAvILiGdpPzdMsAwkfB4Io6\ndab3RtM/AgMBAAECggEAPqKxFMoL++ADysvoLKl+Hp4c54jtJouvximF6x25xsYR\nF+qg6tgf/4soVmjHiB+oj8I0HzZn2ZoFJAGgqa5juzJHI0Ae0l8Z2bzcwQM/PXr7\nDoXNQnAk4BkTM8UWmMKfV/fxOeoF64k5OArxOQfJHqv1st/twzz4Nktutb8UizY4\ndJ4pbgARg1KmgQAYL6RHqRe27kVn+t/BXa4LxjbL7Bz6e08dz63iXa9V+PUvIbSg\natyiCVt0EAqQo1wqNa1bi5ZykcP3BNCnBpamQ4zPAuJradDoKQim1ftJaEPgtx4E\n5omqNpQ2c/rnnoGb3iMycTcNRDx6J4zn/O4aYSzaYQKBgQDhNAEYr1ryysCXaEDl\nQyW4e+aUjC9Kxo3DfxMJuXjlJcEB1K0aBE543facO1sdo96DIETANlbzOFiobpWg\nfi0C2wKpFaS4WR3va6UJQPAsAzP6cqmLoAuEWZ/UKbSgzsmfb0Mc1Rt/1yachfXU\n8sJlbMQZUsMw0qsySXlrJ3QFeQKBgQDD4coU5F22dczv+y28qJMz0HcUqr83f3J2\nVBziFKa7gEqOpJWeM5c/L7mFyZDilbc32GpFYRQLRzc9/+9JOrtIUTaSRRTimpIG\nxhSWKIUXi2tpmPESpFjxK9e4lWbkKvfGnSJ26xA05oxXUG6sTOUzUIiw3t+pusEz\npFHYvPCIdwKBgA6ZyYxpKhNds9jdKH/0t4hbeBqfcB1//Ab1wS07OixZI0dUG5j5\nOIE7mtaMPp8QVcfYmrx/iWmheJYK/WZ3Z8Gso2KFBbXyCS/RodSUwj2IQ6F0N6vW\nx4hgKy2dOpnGbmoI06gV5P+H2ngBc2vIBXR/9cLSi9cpgXH0M4wP9cS5AoGAV/1R\n6EaY7gBGmbpL1kYnMYxAIZF9qbFfOlYYT1oVd35uf1rhNppYI3MNtFJR+eZk0fot\n6pJsDZDk+L3BwDRYsmiAyf2sHwpt9AsAbl8vQd9H1bx09fnLVjJqiaja+j1u5dHq\nDF8U/Z5ehk5EGLPF9WIEtOa4s6aHaOo0NdbReYsCgYBRfUmZJjGtt+cuzxms8bZO\nQxwe1776ZvStptXjuS5ahJ0WtWV6q33CWuiP5j6/RSPGOUS17N298XE/JJl+VzyY\nTkuKlIel7VBasriMknZqg604nlp/VTvkyeSuDBZ7DhUnbAyKY+iOzh6i3pRTKdYt\nHAoJNLEi9B1mxxb54UJ99g==\n-----END PRIVATE KEY-----\n",
+  "client_email": "theekshanabuddhika@ijse-hello-shoes.iam.gserviceaccount.com",
+  "client_id": "106335651743638232686",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/theekshanabuddhika%40ijse-hello-shoes.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

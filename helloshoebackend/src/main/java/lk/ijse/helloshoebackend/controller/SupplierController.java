@@ -1,74 +1,51 @@
 package lk.ijse.helloshoebackend.controller;
 
-import lk.ijse.helloshoebackend.dto.ResponseDTO;
 import lk.ijse.helloshoebackend.dto.SupplierDTO;
 import lk.ijse.helloshoebackend.service.SupplierService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-
 @RestController
-@RequestMapping("/api/v1/supplier")
 @CrossOrigin(origins = "*")
+@RequestMapping("/api/v1/suppliers")
 public class SupplierController {
+
     private final SupplierService supplierService;
 
-    @Autowired
     public SupplierController(SupplierService supplierService) {
         this.supplierService = supplierService;
     }
 
     @PostMapping
-    public ResponseDTO saveOrUpdate(@RequestBody SupplierDTO supplierDTO) {
-        try {
-            if (supplierDTO.getId() == null) {
-                return new ResponseDTO("success", supplierService.saveSupplier(supplierDTO));
-            } else {
-                return new ResponseDTO("success", supplierService.updateSupplier(supplierDTO));
-            }
-        }catch (Exception e){
-            return new ResponseDTO(e.getMessage(), 500);
-        }
-    }
-
-    @PutMapping("/dis/{id}")
-    public ResponseDTO disable(@PathVariable String id) {
-        try {
-            return new ResponseDTO("success", supplierService.disable(id));
-        } catch (Exception e) {
-            return new ResponseDTO(e.getMessage(), 500);
-        }
-    }
-
-    @PutMapping("/enb/{id}")
-    public ResponseDTO enable(@PathVariable String id) {
-        try {
-            return new ResponseDTO("success", supplierService.enable(id));
-        } catch (Exception e) {
-            return new ResponseDTO(e.getMessage(), 500);
-        }
-    }
-
-    @GetMapping("/{id}")
-    public ResponseDTO search(@PathVariable String id) {
-        try {
-            HashMap<String, Object> map = new HashMap<>();
-            map.put("supplier", supplierService.searchSupplier(id));
-            return new ResponseDTO("success", 200, map);
-        } catch (Exception e) {
-            return new ResponseDTO(e.getMessage(), 500);
-        }
+    public ResponseEntity<?> saveSupplier(@RequestBody SupplierDTO supplierDTO){
+        boolean isSave = supplierService.saveSupplier(supplierDTO);
+        return isSave ? ResponseEntity.ok("Supplier Saved !") : ResponseEntity.badRequest().body("Failed to save the supplier");
     }
 
     @GetMapping
-    public ResponseDTO getAll() {
-        try {
-            HashMap<String, Object> map = new HashMap<>();
-            map.put("suppliers", supplierService.getAllSuppliers());
-            return new ResponseDTO("success", 200, map);
-        } catch (Exception e) {
-            return new ResponseDTO(e.getMessage(), 500);
-        }
+    public ResponseEntity<?> getAllSuppliers(){
+        return ResponseEntity.ok(supplierService.getAllSuppliers());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getSupplier(@PathVariable("id") String id){
+        return ResponseEntity.ok(supplierService.getSupplier(id));
+    }
+
+    @PutMapping
+    public ResponseEntity<?> updateSupplier(@RequestBody SupplierDTO supplierDTO){
+        boolean isUpdate = supplierService.updateSupplier(supplierDTO);
+        return isUpdate ? ResponseEntity.ok("Supplier Updated !") : ResponseEntity.badRequest().body("Failed to update the supplier");
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteSupplier(@PathVariable("id") String id){
+        boolean isDelete = supplierService.deleteSupplier(id);
+        return isDelete ? ResponseEntity.ok("Supplier Deleted !") : ResponseEntity.badRequest().body("Failed to delete the supplier");
+    }
+
+    @GetMapping("/get/id")
+    public ResponseEntity<?> getSupplierId(){
+        return ResponseEntity.ok(supplierService.getSupplierId());
     }
 }

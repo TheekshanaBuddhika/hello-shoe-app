@@ -5,10 +5,15 @@ import lk.ijse.helloshoebackend.dto.SupplierDTO;
 import java.util.List;
 
 public interface SupplierService {
-    Integer saveSupplier(SupplierDTO supplierDTO);
-    Integer updateSupplier(SupplierDTO supplierDTO);
-    Integer disable(String id);
-    Integer enable(String id);
-    SupplierDTO searchSupplier(String id);
+    boolean saveSupplier(SupplierDTO supplierDTO);
+
     List<SupplierDTO> getAllSuppliers();
+
+    SupplierDTO getSupplier(String id);
+
+    boolean updateSupplier(SupplierDTO supplierDTO);
+
+    boolean deleteSupplier(String id);
+
+    List<String> getSupplierId();
 }

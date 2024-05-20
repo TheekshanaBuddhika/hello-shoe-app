@@ -5,13 +5,18 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface CustomerService {
-    Boolean existsByEmailAndContact(String email, String contact);
-    Integer saveCustomer(CustomerDTO customerDTO);
-    Integer updateCustomer(CustomerDTO customerDTO);
-    Integer disableCustomer(String id);
-    Integer enableCustomer(String id);
-    CustomerDTO searchCustomer(String id);
+    boolean saveCustomer(CustomerDTO customerDTO);
+
     List<CustomerDTO> getAllCustomers();
+
+    boolean updateCustomer(CustomerDTO customerDTO);
+
+    CustomerDTO getCustomer(String id);
+
+    String deleteCustomer(String id);
+
+    List<String> getContactList();
+
+    CustomerDTO getCustomerByContact(String id);
 }

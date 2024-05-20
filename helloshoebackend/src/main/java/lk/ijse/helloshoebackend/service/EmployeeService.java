@@ -2,15 +2,19 @@ package lk.ijse.helloshoebackend.service;
 
 import lk.ijse.helloshoebackend.dto.EmployeeDTO;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
-@Service
 public interface EmployeeService {
-    Integer saveEmployee(EmployeeDTO employeeDTO);
-    Integer updateEmployee(EmployeeDTO employeeDTO);
-    Integer disable(String id);
-    Integer enable(String id);
-    EmployeeDTO searchEmployee(String id);
-    List<EmployeeDTO> getAllEmployees();
+    boolean saveEmployee(EmployeeDTO employee, MultipartFile file) throws IOException;
+
+    List<EmployeeDTO> getAllAdmins();
+
+    List<EmployeeDTO> getAllCashiers();
+
+    EmployeeDTO getEmployee(String empId);
+
+    boolean updateEmployee(EmployeeDTO employeeDTO,MultipartFile file) throws IOException;
 }
