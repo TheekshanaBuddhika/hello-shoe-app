@@ -1,13 +1,17 @@
 spring:
   application:
-    name: spring-boot-with-jwt-auth
+    name: Hello_Shoe_pvt_ltd
   datasource:
-    url: jdbc:mysql://localhost:3306/hello_shoe?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/hello_shoe_pvt_ltd?createDatabaseIfNotExist=true
     username: root
     password: dragon25
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
-      maximum-pool-size: 20
+      connection-timeout: 20000
+      maximum-pool-size: 5
+      minimum-idle: 5
+      idle-timeout: 30000
+
   jpa:
     properties:
       hibernate:
@@ -15,12 +19,15 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+    database: mysql
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
 
 server:
-  port: 8085
+  port: 8000
   servlet:
-    context-path: /hello_shoe
+    context-path: /hello-shoe
 
-token:
-  secret: 33hOIYlYkIjqYCZzWAXp+/ch/BwAiKKe8KOtf9vwdeWdopItEIXgrx+bBTOD1pNregwkMJkG8/1R5/Sn7nuw7A==
-  expiration: 86400000
