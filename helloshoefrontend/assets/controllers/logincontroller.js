@@ -8,44 +8,59 @@ class user {
   }
 }
 
+$("#loginForm")[0].reset();
+
 $("#signInBtn").click(function (e) {
   e.preventDefault();
 
-  // Call validateForm function from validation.js
-  // if (validateForm()) {
-  //   var email = $("#userEmail").val();
-  //   var password = $("#userPassword").val();
-  //   var data = {
-  //     email: email,
-  //     password: password,
-  //   };
+  var username = $("#userEmail").val();
+  var password = $("#userPassword").val();
+  var data = {
+    username: username,
+    password: password,
+  };
 
-  //   console.log(data);
+  if ($("#userEmail").val() === "" || $("#userPassword").val() === "") {
+    Swal.fire({
+      icon: "warning",
+      title: "Oops...",
+      text: "Enter email or password!",
+    });
+    return;
+  }
 
-  //   $.ajax({
-  //     url: BASE_URL + "auth/login",
-  //     type: "POST",
-  //     contentType: "application/json",
-  //     data: JSON.stringify(data),
-  //     success: function (res) {
-  //       console.log(res);
-  //       localStorage.setItem("user", JSON.stringify(res));
-  //       var userRole = res.role;
-  //       if (userRole === "ADMIN_USER" || userRole === "USER") {
-  //       $("#login-wrapper").css("display", "flex");
-  //         if (userRole !== "ADMIN_USER") {
-  //           $(".admin-item").hide();
-  $("#admin_content").css("display", "block");
+  console.log(data);
 
-  //         }
-  getUserDetails();
-  //       } else {
-  //         $("#errorMessage").text("Invalid User");
-  //       }
-  //     },
-  //     error: function (res) {
-  //       console.error("Login request failed:", res);
-  //     },
-  //   });
-  // }
+  $.ajax({
+    url: BASE_URL + "api/auth/login",
+    type: "POST",
+    contentType: "application/json",
+    data: JSON.stringify(data),
+    success: function (res) {
+      console.log(res);
+      localStorage.setItem("user", JSON.stringify(res));
+      console.log(JSON.parse(localStorage.getItem("user")).jwt);
+      console.log(JSON.parse(localStorage.getItem("user")).profilePic);
+      console.log(JSON.parse(localStorage.getItem("user")).role);
+      console.log(JSON.parse(localStorage.getItem("user")).username);
+
+      if (
+        JSON.parse(localStorage.getItem("user")).role === "ADMIN" ||
+        JSON.parse(localStorage.getItem("user")).role === "SUPER_ADMIN"
+      ) {
+        window.location.href = "index2.html";
+      } else if (JSON.parse(localStorage.getItem("user")).role === "USER") {
+        window.location.href = "index2.html";
+      } else {
+        alert("invalid !");
+      }
+    },
+    error: function (res) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Invalid username or password!",
+      });
+    },
+  });
 });

@@ -1,1 +1,1 @@
-const BASE_URL = "http://localhost:8085/hello_shoe/api/v1/";
+const BASE_URL = "http://localhost:8000/hello-shoe/";

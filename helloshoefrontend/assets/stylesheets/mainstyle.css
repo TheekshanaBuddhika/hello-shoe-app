@@ -1,0 +1,30 @@
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+#brand-list > .nav-item > button:hover,
+#brand-list > .nav-item > button:focus {
+  background-color: black !important;
+  color: white !important;
+}
+
+#btn-move-left,
+#btn-move-right {
+  display: none;
+}
+
+#tbl-inventory tbody tr,
+#tbl-inventory tbody tr td {
+  height: 60px;
+}
+
+#tbl-supplier tbody tr,
+#tbl-supplier tbody tr td {
+  height: 50px;
+}
+
+.emp-loading-pic {
+  width: 100%;
+  height: auto;
+  max-width: 150px; /* Adjust as needed */
+}

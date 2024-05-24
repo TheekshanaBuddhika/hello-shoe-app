@@ -46,7 +46,7 @@ public class AuthController {
             final String jwt = jwtTokenUtil.generateToken(userDetails.getUsername());
             userDto = userDetailService.loginUser(userDetails.getUsername());
             if (userDto.getRole().equals(Role.SUPER_ADMIN)) {
-                profilePic = "1WMx2A5lXWNEWg3Uthc1geR0o9jl7MW88";
+                profilePic = "1piBoC1dcyCqe-b4wIV2QF_9CGtm2e2ND";
             } else {
                 profilePic = userDto.getProfilePic();
             }

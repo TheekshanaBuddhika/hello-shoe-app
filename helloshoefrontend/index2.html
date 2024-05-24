@@ -1,0 +1,2387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="assets/bootstrap-5.3.2-dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="assets/stylesheets/mainstyle.css" />
+    <link
+      rel="icon"
+      href="assets/images/login/shoe_shop_logo.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap5.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <title>Happy Shoe</title>
+  </head>
+  <body>
+    <main
+      class="container-fluid m-0 p-0 vh-100 w-100 bg-black position-relative"
+    >
+      <!-- Dashboard -->
+      <section
+        id="dboard-wrapper"
+        class="dashboard-wrapper container-fluid h-100 w-100 m-0 p-0 position-relative d-flex flex-row bg-white align-items-center justify-content-center flex-column"
+      >
+        <!-- header -->
+        <nav
+          class="sb-topnav navbar navbar-expand bg-wite position-absolute top-0 w-100 justify-content-between align-items-center shadow-sm z-1"
+          style="height: 8%"
+        >
+          <!-- Navbar Brand-->
+          <p class="navbar-brand ms-3 m-0 p-0 text-dark fs-5 fw-bolder">
+            <img
+              src="assets/images/login/shoe_shop_logo.png "
+              class="me-2"
+              style="height: 30px"
+            />Happy Shoes
+          </p>
+
+          <!-- Navbar-->
+          <ul
+            class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4 w-50 d-flex justify-content-between align-items-center"
+          >
+            <span
+              id="datetime"
+              aria-readonly="true"
+              class="fs-5 text-dark text-center fw-bold"
+            ></span>
+            <button
+              id="logout-btn"
+              class="btn btn-dark h-100 ms-3"
+              style="width: 15%"
+            >
+              Log Out
+            </button>
+          </ul>
+        </nav>
+
+        <!-- Content Form -->
+        <div
+          class="dashboard-detail-wrapper position-absolute d-flex flex-row bottom-0 start-0 end-0 bg-white"
+          style="height: 92%"
+        >
+          <!-- Sidebar  -->
+          <nav
+            id="sidebar"
+            class="position-relative h-100 bg-dark"
+            style="width: 20%"
+          >
+            <!-- side-bar profile-pic -->
+            <div
+              class="sidebar-header h-25 d-flex flex-column justify-content-center align-items-center position-relative"
+            >
+              <img
+                class="rounded-circle bg-dark border border-2 border-white"
+                id="admin-profile-pic"
+                width="80"
+                height="80"
+              />
+              <h6
+                class="text-secondary text-center text-white mt-3 fs-5"
+                id="admin-user-name"
+              >
+                USER
+              </h6>
+              <hr
+                class="border border-white border-1 opacity-50 w-75 position-absolute bottom-0"
+              />
+            </div>
+            <!-- side-bar content -->
+            <div class="w-100 h-75 d-flex align-items-center ms-2">
+              <ul
+                class="nav nav-pills flex-column mb-auto p-2"
+                id="side_bar_option"
+              ></ul>
+            </div>
+          </nav>
+          <!----------------------------------------------------------- content containers  ---------------------------------------------------------------->
+          <section
+            id="Content_wrapper"
+            class="container-fluid m-0 p-2 w-100 h-100 overflow-auto"
+          >
+            <!-- admin -->
+            <section
+              id="admin_content"
+              class="container-fluid m-0 p-0 position-relative"
+            >
+              <div class="container p-2">
+                <!-- datepicker -->
+                <div
+                  class="container p-0 w-25 position-relative d-inline"
+                  style="left: 810px"
+                >
+                  <label for="datepicker">Choose a date:</label>
+                  <input type="date" id="datepicker" />
+                </div>
+                <!--revenue card -->
+                <div class="row flex-nowrap w-100 p-2 mt-5">
+                  <div class="col-md-3">
+                    <div class="card bg-white text-dark shadow-lg">
+                      <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                          <div>
+                            <h6>Today's Money</h6>
+                            <h6>Rs. 6700</h6>
+                          </div>
+                          <div>
+                            <i
+                              class="bi bi-cart-fill fs-2 bg-success p-2 rounded-2 text-white"
+                            ></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="card bg-white text-dark shadow-lg">
+                      <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                          <div>
+                            <h6>Sales</h6>
+                            <h6>Rs. 780000</h6>
+                          </div>
+                          <div>
+                            <i
+                              class="bi bi-cart fs-2 bg-success p-2 rounded-2 text-white"
+                            ></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="card bg-white text-dark shadow-lg">
+                      <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                          <div>
+                            <h6>Sales</h6>
+                            <h6>Rs. 780000</h6>
+                          </div>
+                          <div>
+                            <i
+                              class="bi bi-cart fs-2 bg-danger p-2 rounded-2 text-white"
+                            ></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="card bg-white text-dark shadow-lg">
+                      <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                          <div>
+                            <h6>Sales</h6>
+                            <h6>Rs. 780000</h6>
+                          </div>
+                          <div>
+                            <i
+                              class="bi bi-cart fs-2 bg-success p-2 rounded-2 text-white"
+                            ></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- best shoe card -->
+                <div class="row flex-nowrap w-100 p-2 mt-5">
+                  <div class="col-12 rounded-2">
+                    <div
+                      class="card bg-dark-subtle text-dark shadow-lg d-flex flex-row align-items-center border border-white border-5"
+                    >
+                      <div
+                        class="card-body col-6 text-center text-white fw-semibold bg-dark shadow-lg me-3 rounded-end-2 d-flex align-items-center justify-content-center"
+                        style="
+                          font-size: 5em;
+                          font-family: fantasy;
+                          height: 150px;
+                        "
+                      >
+                        Most Selling Shoe
+                      </div>
+                      <div class="card-body col-6 p-0 m-0">
+                        <img
+                          src="assets/images/login/login-bg.jpg"
+                          alt=""
+                          class="img-fluid h-100 w-auto rounded-2 shadow-sm"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!--sales table  -->
+                <div class="row mt-5 w-100 flex-nowrap p-2 h-50">
+                  <div class="col-md-6 overflow-y-auto h-100">
+                    <div class="card bg-white text-dark shadow-sm">
+                      <div class="card-body">
+                        <h6>Recent Orders</h6>
+                        <hr />
+                        <table class="table table-borderless">
+                          <thead>
+                            <tr>
+                              <th>Order ID</th>
+                              <th>Customer</th>
+                              <th>Amount</th>
+                              <th>Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>1</td>
+                              <td>John Doe</td>
+                              <td>Rs. 6700</td>
+                              <td>
+                                <span class="badge bg-success">Delivered</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>John Doe</td>
+                              <td>Rs. 6700</td>
+                              <td>
+                                <span class="badge bg-warning">Pending</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>John Doe</td>
+                              <td>Rs. 6700</td>
+                              <td>
+                                <span class="badge bg-success">Delivered</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>John Doe</td>
+                              <td>Rs. 6700</td>
+                              <td>
+                                <span class="badge bg-danger">Cancelled</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>John Doe</td>
+                              <td>Rs. 6700</td>
+                              <td>
+                                <span class="badge bg-danger">Cancelled</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>John Doe</td>
+                              <td>Rs. 6700</td>
+                              <td>
+                                <span class="badge bg-danger">Cancelled</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>John Doe</td>
+                              <td>Rs. 6700</td>
+                              <td>
+                                <span class="badge bg-danger">Cancelled</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>John Doe</td>
+                              <td>Rs. 6700</td>
+                              <td>
+                                <span class="badge bg-danger">Cancelled</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>John Doe</td>
+                              <td>Rs. 6700</td>
+                              <td>
+                                <span class="badge bg-danger">Cancelled</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>John Doe</td>
+                              <td>Rs. 6700</td>
+                              <td>
+                                <span class="badge bg-danger">Cancelled</span>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 overflow-y-auto h-100">
+                    <div class="card bg-white text-dark shadow-sm">
+                      <div class="card-body">
+                        <h6>Recent Products</h6>
+                        <hr />
+                        <table class="table table-borderless">
+                          <thead>
+                            <tr>
+                              <th>Product ID</th>
+                              <th>Product Name</th>
+                              <th>Price</th>
+                              <th>Stock</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>1</td>
+                              <td>Shoe</td>
+                              <td>Rs. 6700</td>
+                              <td>10</td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>Shoe</td>
+                              <td>Rs. 6700</td>
+                              <td>10</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>Shoe</td>
+                              <td>Rs. 6700</td>
+                              <td>10</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>Shoe</td>
+                              <td>Rs. 6700</td>
+                              <td>10</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>Shoe</td>
+                              <td>Rs. 6700</td>
+                              <td>10</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>Shoe</td>
+                              <td>Rs. 6700</td>
+                              <td>10</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>Shoe</td>
+                              <td>Rs. 6700</td>
+                              <td>10</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>Shoe</td>
+                              <td>Rs. 6700</td>
+                              <td>10</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>Shoe</td>
+                              <td>Rs. 6700</td>
+                              <td>10</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- sale -->
+            <section
+              id="sale_content"
+              class="container-fluid m-0 ps-3 pe-3 pt-1 position-relative h-100"
+            >
+              <div class="row h-100">
+                <!-- item container serch and tabs -->
+                <section class="col-9 p-3 h-100">
+                  <!-- search and chooser tabs -->
+                  <div
+                    class="d-flex justify-content-sm-between align-items-center"
+                  >
+                    <!-- search -->
+                    <div class="input-group mb-3 me-5" style="width: 300px">
+                      <span class="input-group-text" id="basic-addon1"
+                        ><i class="bi bi-search text-secondary"></i
+                      ></span>
+                      <input
+                        type="text"
+                        class="form-control shadow-sm"
+                        id="txt-search-product"
+                        placeholder="Search Item"
+                        aria-label="Search"
+                        aria-describedby="basic-addon1"
+                      />
+                    </div>
+                    <!-- chooser tabs -->
+                    <div
+                      class="draggable slider d-flex flex-nowrap z-5 w-50 mb-3 justify-content-between"
+                    >
+                      <!--                        buton-->
+                      <button class="btn btn-outline-dark" id="btn-move-left">
+                        <i class="bi bi-caret-left"></i>
+                      </button>
+                      <ul
+                        class="nav ms-3 nav-pills overflow-hidden d-flex flex-nowrap"
+                        id="brand-list"
+                        role="tablist"
+                      ></ul>
+                      <!--                        button-->
+                      <button class="btn btn-outline-dark" id="btn-move-right">
+                        <i class="bi bi-caret-right"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <!-- product tabs -->
+                  <div
+                    class="tab-content overflow-y-auto rounded border shadow-sm"
+                    style="height: 90%"
+                  >
+                    <div
+                      class="d-flex flex-wrap w-100 h-auto mt-3 justify-content-start ps-2 row row-cols-3 p-0"
+                      id="product-content"
+                    ></div>
+                  </div>
+                </section>
+                <!-- payment place -->
+                <section
+                  class="col-3 border-start overflow-y-auto h-100 bg-body-secondary rounded"
+                >
+                  <section class="p-3">
+                    <!-- custoer details -->
+                    <div class="w-100 d-flex flex-column">
+                      <div
+                        class="w-100 d-flex flex-row justify-content-between align-items-center mb-3"
+                      >
+                        <!-- contact number -->
+                        <div class="input-group rounded w-75">
+                          <span class="input-group-text" id="basic-addon1"
+                            ><i class="bi bi-search text-secondary"></i
+                          ></span>
+                          <input
+                            type="text"
+                            class="form-control rounded rounded-start-0"
+                            placeholder="Contact Number"
+                            aria-label="Username "
+                            aria-describedby="basic-addon1"
+                            list="list-customerList"
+                            id="txt-cus-contact"
+                          />
+                          <datalist id="list-customerList"> </datalist>
+                        </div>
+                        <!-- clear button -->
+                        <button
+                          class="btn btn-outline-danger p-0 m-0"
+                          style="height: 25px; width: 20%"
+                          id="btn-clear"
+                        >
+                          <i class="bi bi-trash3-fill"></i>
+                        </button>
+                      </div>
+
+                      <!-- loyalty customer name -->
+                      <div
+                        id="loyal-name"
+                        class="w-100 card flex-column justify-content-center align-items-center p-1 shadow-sm mb-2"
+                      >
+                        <h6 class="text-secondary p-0 m-0">Customer Name</h6>
+                        <small
+                          class="text-dark fw-bold"
+                          id="txt-customer-name"
+                        ></small>
+                      </div>
+                      <!-- loyalty points -->
+                      <div
+                        id="loyal-points"
+                        class="w-100 card flex-row justify-content-between align-items-center p-1 ps-2 pe-2 shadow-sm mb-2"
+                      >
+                        <h6 class="text-secondary p-0 m-0">Loyalty Point</h6>
+                        <small class="text-dark fw-bold" id="txt-point"></small>
+                      </div>
+                      <!-- added loyal points -->
+                      <div
+                        id="loyal-current"
+                        class="w-100 card flex-row justify-content-between align-items-center p-1 ps-2 pe-2 shadow-sm mb-2"
+                      >
+                        <h6 class="text-secondary p-0 m-0">
+                          Current sale points
+                        </h6>
+                        <small class="text-dark fw-bold" id="added-new-point"
+                          >0</small
+                        >
+                      </div>
+                    </div>
+
+                    <!-- cart -->
+                    <section
+                      class="mt-1 overflow-y-auto mb-3"
+                      style="max-height: 220px"
+                      id="cart"
+                    ></section>
+
+                    <!-- testing -->
+                    <!--  payment method chooser -->
+                    <div class="form-check form-switch">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        role="switch"
+                        id="payment-method-checkbox"
+                      />
+                      <label
+                        class="form-check-label text-dark fs-6 fw-bold"
+                        for="payment-method-checkbox"
+                        >Card Payment</label
+                      >
+                    </div>
+                    <!-- total -->
+                    <div
+                      class="d-flex justify-content-between bg-dark-subtle rounded border border-2 p-1 ps-3 pe-3"
+                    >
+                      <h5 class="fs-5 fw-bold p-0 m-0">Total</h5>
+                      <h5 id="txt-sub-total" class="p-0 m-0 fw-bold">Rs. 0</h5>
+                    </div>
+                    <!-- cash payment -->
+                    <div
+                      id="cash"
+                      class="col-12 card border border-1 mt-3 p-2 flex-column align-items-center"
+                    >
+                      <!-- given cash -->
+                      <div class="col-10">
+                        <div class="mb-3">
+                          <label for="txt-cash" class="form-label fs-5 fw-bold"
+                            >Cash</label
+                          >
+                          <input
+                            id="txt-cash"
+                            type="text"
+                            class="form-control mt-1"
+                            placeholder="Cash Amount"
+                          />
+                        </div>
+                      </div>
+                      <!-- balance -->
+                      <div
+                        class="mb-3 col-10 d-flex flex-row align-items-center justify-content-start card mt-2 border border-0 rounded-0 flex-wrap"
+                      >
+                        <label
+                          for="balance-amount"
+                          class="col-12 col-form-label fs-5 fw-bold text-dark"
+                          >Balance Amount</label
+                        >
+                        <div class="col-12">
+                          <input
+                            type="text"
+                            readonly
+                            class="form-control-plaintext fs-5 fw-bold text-dark text-center"
+                            id="balance-amount"
+                            value="0"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <!-- card payment-->
+                    <div
+                      id="card"
+                      class="col-12 card border border-1 mt-3 p-2 flex-column align-items-center"
+                    >
+                      <!-- given card number -->
+                      <div class="col-10">
+                        <div class="mb-3">
+                          <div
+                            class="m-0 p-0 d-flex flex-row justify-content-between w-100"
+                          >
+                            <label
+                              for="card-num-id"
+                              class="form-label fs-5 fw-bold"
+                              >Card Number</label
+                            >
+                            <div
+                              class="w-25 d-flex flex-row justify-content-between align-items-center"
+                            >
+                              <img
+                                src="assets/images/others/visa.png"
+                                class="w-50 h-50"
+                              />
+                              <img
+                                src="assets/images/others/master.png"
+                                class="w-50 h-50"
+                              />
+                            </div>
+                          </div>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="card-num-id"
+                            placeholder="Card Number"
+                          />
+                        </div>
+                      </div>
+                      <!-- bank name -->
+                      <div
+                        class="mb-1 col-10 d-flex flex-row align-items-center justify-content-start card mt-3 border border-0 rounded-0 flex-wrap"
+                      >
+                        <div class="mb-3 w-100">
+                          <label for="bank-id" class="form-label fs-5 fw-bold"
+                            >Bank Name</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control w-100"
+                            id="bank-id"
+                            list="list-bankList"
+                            placeholder="Bank name"
+                          />
+                        </div>
+                        <datalist id="list-bankList">
+                          <option selected></option>
+                          <option value="BOC">BOC</option>
+                          <option value="HNB">HNB</option>
+                          <option value="PEOPLES">PEOPLES</option>
+                          <option value="SAMPATH">SAMPATH</option>
+                          <option value="NSB">NSB</option>
+                          <option value="COMERCEL">COMERCEL</option>
+                        </datalist>
+                      </div>
+                    </div>
+                    <!-- payment button -->
+                    <div
+                      class="col-12 mt-2 d-flex align-items-center justify-content-center"
+                    >
+                      <div class="d-flex align-items-center col-12">
+                        <button
+                          type="button"
+                          class="btn btn-outline-dark w-100"
+                          id="btn-proceed-order"
+                        >
+                          <i class="fas fa-money-check fa-sm fa-fw"></i>
+                          Pay
+                        </button>
+                      </div>
+                    </div>
+                    <!-- testing -->
+                  </section>
+                </section>
+              </div>
+              <div
+                class="modal fade"
+                id="payment-modal"
+                data-bs-backdrop="static"
+                data-bs-keyboard="false"
+                tabindex="-1"
+                aria-labelledby="staticBackdropLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <form id="supplier-inputs">
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="mb-1">
+                              <label for="customer-gender" class="form-label"
+                                >Customer Gender</label
+                              >
+                              <select
+                                class="form-select"
+                                aria-label="Default select example"
+                                id="customer-gender"
+                              >
+                                <option selected></option>
+                                <option value="BOC">BOC</option>
+                                <option value="HNB">HNB</option>
+                                <option value="PEOPLES">PEOPLES</option>
+                                <option value="SAMPATH">SAMPATH</option>
+                                <option value="NSB">NSB</option>
+                                <option value="COMERCEL">COMERCEL</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="mb-1">
+                              <label
+                                for="customer-contact"
+                                class="form-label"
+                                id="lbl-status"
+                                >Customer Contact</label
+                              >
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="customer-contact"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        id="btn-payment"
+                      >
+                        Add Payment
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- inventory -->
+            <section
+              id="inventory_content"
+              class="container-fluid m-0 p-3 position-relative"
+            >
+              <div class="wrapper">
+                <!-- Page Content  -->
+                <div id="" class="w-100">
+                  <div class="d-flex justify-content-end">
+                    <button class="btn btn-dark" id="btn-open-model">
+                      <i class="bi bi-house-add-fill"></i> Add Product
+                    </button>
+                  </div>
+
+                  <section
+                    class="container-fluid w-100 rounded shadow-lg pt-3 pb-3 mt-3 border"
+                  >
+                    <table
+                      id="tbl-inventory"
+                      class="table table-striped table-hover table-dark"
+                      style="width: 100%"
+                    >
+                      <thead>
+                        <tr>
+                          <th
+                            class="text-center border border-white border-bottom-0 border-top-0 border-start-0"
+                            colspan="8"
+                            data-dt-order="disable"
+                          >
+                            Item Info
+                          </th>
+                          <th
+                            class="text-center border border-white border-bottom-0 border-top-0"
+                            colspan="2"
+                            data-dt-order="disable"
+                          >
+                            Supplier Info
+                          </th>
+                          <th
+                            class="text-center border border-white border-bottom-0 border-top-0"
+                            colspan="6"
+                            data-dt-order="disable"
+                          >
+                            Selling Info
+                          </th>
+                          <th
+                            class="text-center border border-white border-bottom-0 border-top-0 border-end-0"
+                            colspan="1"
+                            data-dt-order="disable"
+                          >
+                            #
+                          </th>
+                        </tr>
+                        <tr style="font-size: 10px">
+                          <th>Code</th>
+                          <th>Image</th>
+                          <th>Name</th>
+                          <th>Size</th>
+                          <th>Qty</th>
+                          <th>Brand</th>
+                          <th>type</th>
+                          <th>Gender</th>
+                          <th>Supplier Code</th>
+                          <th>Supplier name</th>
+                          <th>Discount</th>
+                          <th>Selling price</th>
+                          <th>Buying price</th>
+                          <th>Profit (Expected)</th>
+                          <th>Profit (Margin)</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody id="tbl-item-body" style="font-size: 10px"></tbody>
+                    </table>
+                  </section>
+                </div>
+              </div>
+
+              <div
+                class="modal fade"
+                id="inventory-modal"
+                data-bs-backdrop="static"
+                data-bs-keyboard="false"
+                tabindex="-1"
+                aria-labelledby="staticBackdropLabel"
+                aria-hidden="true"
+              >
+                <div
+                  class="modal-dialog modal-dialog-centered modal-fullscreen"
+                >
+                  <div class="modal-content">
+                    <div class="modal-header bg-dark">
+                      <h1
+                        class="modal-title fs-5 text-center text-white fw-bolder"
+                        id="staticBackdropLabel"
+                      >
+                        Add Product
+                      </h1>
+                      <div>
+                        <button
+                          type="button"
+                          id="inventory-clear"
+                          class="btn btn-outline-danger me-3"
+                        >
+                          <i class="bi bi-trash3-fill"></i>
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-outline-light border border-0"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <i class="bi bi-x-lg"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="modal-body h-100">
+                      <form id="inventory-inputs " class="p-3 h-100">
+                        <div
+                          class="row rounded shadow-sm border bg-white h-100 overflow-hidden"
+                        >
+                          <div
+                            class="col-4 bg-dark-subtle rounded rounded-end-0"
+                          >
+                            <div
+                              class="mb-1 bg-light-subtle d-flex flex-column justify-content-center align-items-center pb-2 mt-2 rounded border border-dark shadow-sm"
+                            >
+                              <span class="fs-3 fw-bold text-dark p-0 m-0"
+                                >New Product</span
+                              >
+                              <div
+                                class="d-flex justify-content-center mt-2 ms-2 me-2 mb-0"
+                              >
+                                <img
+                                  src="assets/images/login/shoe_shop_logo.png"
+                                  id="item-img-preview"
+                                  class="border border-dark shadow-sm rounded bg-body-secondary mb-2"
+                                  style="width: 200px; height: 200px"
+                                />
+                              </div>
+                              <input
+                                type="file"
+                                class="form-control w-75 m-auto"
+                                id="item-img"
+                              />
+                            </div>
+
+                            <div
+                              class="col-12 d-flex flex-column justify-content-center align-items-center pt-1"
+                            >
+                              <div class="mb-1 col-11">
+                                <label for="item-desc" class="form-label"
+                                  >Name</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control shadow-sm"
+                                  id="item-desc"
+                                />
+                              </div>
+                              <div class="mb-1 col-11">
+                                <label for="Item-brand" class="form-label"
+                                  >Brand</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control shadow-sm"
+                                  id="item-brand"
+                                />
+                              </div>
+                              <div
+                                class="d-flex flex-row col-12 justify-content-evenly"
+                              >
+                                <div class="mb-1 me-2 col-5">
+                                  <label
+                                    for="item-userbility"
+                                    class="form-label text-dark fs-6"
+                                    >Formal / Casual / Kids</label
+                                  >
+                                  <select
+                                    class="form-select shadow-sm"
+                                    aria-label="Default select example"
+                                    id="item-userbility"
+                                  >
+                                    <option selected></option>
+                                    <option value="FORMAL">FORMAL</option>
+                                    <option value="CAUSAL">CAUSAL</option>
+                                    <option value="SPORTS">SPORTS</option>
+                                  </select>
+                                </div>
+                                <div class="mb-1 ms-2 col-5">
+                                  <label
+                                    for="item-gender"
+                                    class="form-label text-dark fs-6"
+                                    >Gender</label
+                                  >
+                                  <select
+                                    class="form-select shadow-sm"
+                                    aria-label="Default select example"
+                                    id="item-gender"
+                                  >
+                                    <option selected></option>
+                                    <option value="MALE">MALE</option>
+                                    <option value="FEMALE">FEMALE</option>
+                                    <option value="KIDS">KIDS</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-8 p-2 h-100">
+                            <div class="rounded border col-12 ps-3 pe-3 h-100">
+                              <span class="fs-3 fw-bold text-dark p-0 m-0"
+                                >Product details</span
+                              >
+                              <hr />
+                              <div
+                                class="col-12 d-flex flex-row align-items-end justify-content-evenly h-75 p-5"
+                              >
+                                <div class="col-5">
+                                  <div class="mb-2">
+                                    <label
+                                      for="item-supplier"
+                                      class="form-label"
+                                      >Select Supplier</label
+                                    >
+                                    <select
+                                      class="form-select shadow-sm"
+                                      aria-label="Default select example"
+                                      id="item-supplier"
+                                    >
+                                      <option selected></option>
+                                    </select>
+                                  </div>
+
+                                  <div class="mb-2">
+                                    <label for="item-status" class="form-label"
+                                      >Availability</label
+                                    >
+                                    <select
+                                      class="form-select shadow-sm"
+                                      aria-label="Default select example"
+                                      id="item-status"
+                                    >
+                                      <option selected></option>
+                                      <option value="AVAILABLE">
+                                        AVAILABLE
+                                      </option>
+                                      <option value="NOT_AVAILABLE">
+                                        NOT_AVAILABLE
+                                      </option>
+                                      <option value="LOW_STOCK">
+                                        LOW_STOCK
+                                      </option>
+                                    </select>
+                                  </div>
+                                  <div class="mb-2">
+                                    <label
+                                      for="item-qty"
+                                      class="form-label"
+                                      id="lbl-status"
+                                      >Item Qty</label
+                                    >
+                                    <input
+                                      type="text"
+                                      class="form-control shadow-sm"
+                                      id="item-qty"
+                                    />
+                                  </div>
+                                  <div class="mb-2">
+                                    <label
+                                      for="item-buying-price"
+                                      class="form-label"
+                                      >Item Buying Price</label
+                                    >
+                                    <input
+                                      type="text"
+                                      class="form-control shadow-sm"
+                                      id="item-buying-price"
+                                    />
+                                  </div>
+                                  <div class="mb-2">
+                                    <label
+                                      for="item-expect-profit"
+                                      class="form-label"
+                                      >Profit Expected</label
+                                    >
+                                    <input
+                                      type="text"
+                                      class="form-control shadow-sm"
+                                      id="item-expect-profit"
+                                    />
+                                  </div>
+                                </div>
+                                <div class="col-5">
+                                  <label>Supplier Name</label>
+                                  <div
+                                    style="height: 28px"
+                                    class="bg-white rounded-2 d-flex mt-2 mb-2 justify-content-sm-between border"
+                                  >
+                                    <label
+                                      class="text-primary"
+                                      id="supplier-name"
+                                    ></label>
+                                  </div>
+                                  <div class="mb-2">
+                                    <label for="item-size" class="form-label"
+                                      >Size</label
+                                    >
+                                    <input
+                                      type="number"
+                                      class="form-control shadow-sm"
+                                      id="item-size"
+                                    />
+                                  </div>
+                                  <div class="mb-2">
+                                    <label
+                                      for="item-discount"
+                                      class="form-label"
+                                      >Discount</label
+                                    >
+                                    <input
+                                      type="number"
+                                      class="form-control shadow-sm"
+                                      id="item-discount"
+                                    />
+                                  </div>
+
+                                  <div class="mb-2">
+                                    <label
+                                      for="item-selling-price"
+                                      class="form-label"
+                                      >Selling Price</label
+                                    >
+                                    <input
+                                      type="text"
+                                      class="form-control shadow-sm"
+                                      id="item-selling-price"
+                                    />
+                                  </div>
+
+                                  <div class="mb-2">
+                                    <label
+                                      for="profit-margin"
+                                      class="form-label"
+                                      >Profit Margin</label
+                                    >
+                                    <input
+                                      type="text"
+                                      class="form-control shadow-sm"
+                                      id="profit-margin"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer bg-dark-subtle">
+                      <button
+                        type="button"
+                        class="btn btn-outline-dark"
+                        id="btn-add-item"
+                      ></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="modal fade bg-transparent"
+                id="spinner"
+                data-bs-backdrop="static"
+                data-bs-keyboard="false"
+                tabindex="-1"
+                aria-labelledby="staticBackdropLabel"
+                aria-hidden="true"
+              >
+                <div
+                  class="modal-dialog modal-dialog-centered modal-lg bg-transparent"
+                >
+                  <div class="modal-content bg-transparent">
+                    <div class="modal-body bg-transparent">
+                      <div
+                        class="spinner-border"
+                        style="width: 3rem; height: 3rem"
+                        role="status"
+                      >
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- refund -->
+            <section
+              id="refund_content"
+              class="container-fluid m-0 d-flex justify-content-center align-items-center pt-5"
+            >
+              <div
+                class="row w-100 h-100 d-flex justify-content-center align-items-center"
+              >
+                <span class="fs-3 fw-bold text-dark">Refund Eligible List</span>
+                <hr />
+                <div class="col-12 mt-3" style="height: 70vh">
+                  <section
+                    class="overflow-y-scroll mt-3 rounded border shadow-lg ps-3 pe-2 p-2 h-100"
+                  >
+                    <table
+                      id="tbl-refund"
+                      class="table table-striped table-hover table-dark"
+                      style="width: 100%"
+                    >
+                      <thead>
+                        <tr style="font-size: 10px">
+                          <th>Sale Code</th>
+                          <th>Customer Name</th>
+                          <th>Customer Contact</th>
+                          <th>Item Quantity</th>
+                          <th>Purchased Date</th>
+                          <th>Cashier Name</th>
+                          <th>Total Price</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody
+                        id="tbl-refund-body"
+                        style="font-size: 10px"
+                      ></tbody>
+                    </table>
+                  </section>
+                </div>
+              </div>
+            </section>
+            <!-- supplier -->
+            <section
+              id="supplier_content"
+              class="container-fluid m-0 p-0 position-relative"
+            >
+              <div class="wrapper">
+                <!-- Page Content  -->
+                <div id="" class="w-100">
+                  <section class="p-3">
+                    <section
+                      class="mt-2 container-fluid d-flex justify-content-end"
+                    >
+                      <button
+                        class="btn btn-sm btn-dark"
+                        id="btn-add-modal"
+                        style="height: 30px"
+                        type="button"
+                      >
+                        <i class="bi bi-person-fill-add"></i> Add Supplier
+                      </button>
+                    </section>
+                    <section
+                      class="container-fluid w-100 rounded shadow-lg pt-3 pb-3 mt-3 border"
+                    >
+                      <table
+                        id="tbl-supplier"
+                        class="table table-striped table-hover table-dark"
+                        style="width: 100%"
+                      >
+                        <thead>
+                          <tr>
+                            <th
+                              class="text-center border border-white border-bottom-0 border-top-0 border-start-0"
+                              colspan="6"
+                              data-dt-order="disable"
+                            >
+                              Supplier
+                            </th>
+                            <th
+                              class="text-center border border-white border-bottom-0 border-top-0"
+                              colspan="4"
+                              data-dt-order="disable"
+                            >
+                              Address
+                            </th>
+                            <th
+                              class="text-center border border-white border-bottom-0 border-top-0 border-end-0"
+                              colspan="1"
+                              data-dt-order="disable"
+                            >
+                              #
+                            </th>
+                          </tr>
+                          <tr style="font-size: 10px">
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Personal Contact</th>
+                            <th>Office Contact</th>
+                            <th>Email</th>
+                            <th>Location</th>
+                            <th>Street</th>
+                            <th>State</th>
+                            <th>Postal Code</th>
+                            <th>Country</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody
+                          id="tbl-supplier-body"
+                          style="font-size: 10px"
+                        ></tbody>
+                      </table>
+                    </section>
+                  </section>
+                </div>
+              </div>
+
+              <div
+                class="modal fade"
+                id="supplier-modal"
+                data-bs-backdrop="static"
+                data-bs-keyboard="false"
+                tabindex="-1"
+                aria-labelledby="staticBackdropLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header bg-dark">
+                      <h1
+                        class="modal-title fs-5 text-white"
+                        id="staticBackdropLabel"
+                      >
+                        Add Supplier
+                      </h1>
+
+                      <div>
+                        <button
+                          type="button"
+                          id="supplier-clear"
+                          class="btn btn-outline-danger me-3"
+                        >
+                          <i class="bi bi-trash3-fill"></i>
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-outline-light border border-0"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <i class="bi bi-x-lg"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="modal-body">
+                      <form id="supplier-inputs">
+                        <div class="row p-3">
+                          <div
+                            class="col-12 d-flex flex-column justify-content-evenly rounded rounded-bottom-0 shadow-sm border border-bottom-0"
+                          >
+                            <span class="fs-3 fw-bold ms-5 ps-2"
+                              >Supplier General Info</span
+                            >
+                            <hr />
+                            <div
+                              class="col-12 d-flex flex-wrap justify-content-evenly pb-2"
+                            >
+                              <div class="mb-3 col-5">
+                                <label
+                                  for="sup-name"
+                                  class="form-label"
+                                  id="lbl-status"
+                                  >Name</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control form-text"
+                                  id="sup-name"
+                                />
+                              </div>
+                              <div class="mb-3 col-5">
+                                <label
+                                  for="supplier-category"
+                                  class="form-label"
+                                  >Location</label
+                                >
+                                <select
+                                  class="form-select"
+                                  aria-label="Default select example"
+                                  id="supplier-category"
+                                >
+                                  <option selected></option>
+                                  <option value="INTERNATIONAL">
+                                    INTERNATIONAL
+                                  </option>
+                                  <option value="LOCAL">LOCAL</option>
+                                </select>
+                              </div>
+                              <div class="mb-3 col-5">
+                                <label
+                                  for="sup-contact-1"
+                                  class="form-label"
+                                  id="lbl-status"
+                                  >Personal Contact</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="sup-contact-1"
+                                />
+                              </div>
+                              <div class="mb-3 col-5">
+                                <label for="sup-contact-2" class="form-label"
+                                  >Office Contact</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="sup-contact-2"
+                                />
+                              </div>
+                              <div class="mb-3 col-5">
+                                <label for="sup-email" class="form-label"
+                                  >Email</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="sup-email"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="col-12 rounded rounded-top-0 border border-top-0 shadow-sm"
+                          >
+                            <span class="fs-4 fw-bold ms-5 ps-2"
+                              >Address Info</span
+                            >
+                            <div
+                              class="col-12 d-flex flex-wrap justify-content-evenly pb-2"
+                            >
+                              <div class="mb-3 col-5">
+                                <label for="sup-address-lane" class="form-label"
+                                  >Street</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="sup-address-lane"
+                                />
+                              </div>
+                              <div class="mb-3 col-5">
+                                <label
+                                  for="sup-address-country"
+                                  class="form-label"
+                                  >Nearest City</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="sup-address-country"
+                                />
+                              </div>
+                              <div class="mb-3 col-5">
+                                <label for="sup-address-city" class="form-label"
+                                  >Main City</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="sup-address-city"
+                                />
+                              </div>
+                              <div class="mb-3 col-5">
+                                <label
+                                  for="sup-address-state"
+                                  class="form-label"
+                                  >State</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="sup-address-state"
+                                />
+                              </div>
+
+                              <div class="mb-3 col-5">
+                                <label for="sup-address-code" class="form-label"
+                                  >Postal Code</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="sup-address-code"
+                                />
+                              </div>
+                              <div class="mb-3 col-5">
+                                <label
+                                  for="sup-origin-country"
+                                  class="form-label"
+                                  >Origin Country</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="sup-origin-country"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer bg-dark-subtle">
+                      <button
+                        type="button"
+                        class="btn btn-outline-dark"
+                        id="btn-add-sup"
+                      ></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- customers -->
+            <section
+              id="customer_content"
+              class="container-fluid m-0 ps-3 pe-3 position-relative"
+            >
+              <section class="container-fluid d-flex justify-content-end mt-3">
+                <button
+                  class="btn btn-sm btn-dark"
+                  id="btn-add-customer"
+                  style="height: 35px"
+                  type="button"
+                >
+                  <i class="bi bi-person-fill-add"></i> Add Customer
+                </button>
+              </section>
+              <section class="p-3 mt-3 rounded border shadow-lg">
+                <table
+                  id="tbl-customer"
+                  class="table table-striped table-hover table-dark"
+                  style="width: 100%"
+                >
+                  <thead>
+                    <tr>
+                      <th
+                        class="text-center border border-white border-bottom-0 border-top-0 border-start-0"
+                        colspan="6"
+                        data-dt-order="disable"
+                      >
+                        Customer General Info
+                      </th>
+                      <th
+                        class="text-center border border-white border-bottom-0 border-top-0 border-start-0"
+                        colspan="4"
+                        data-dt-order="disable"
+                      >
+                        Address Info
+                      </th>
+                      <th
+                        class="text-center border border-white border-bottom-0 border-top-0"
+                        colspan="4"
+                        data-dt-order="disable"
+                      >
+                        Company Related Info
+                      </th>
+                      <th
+                        class="text-center border border-white border-bottom-0 border-top-0 border-end-0"
+                        colspan="1"
+                        data-dt-order="disable"
+                      >
+                        #
+                      </th>
+                    </tr>
+                    <tr style="font-size: 10px">
+                      <th>Code</th>
+                      <th>Name</th>
+                      <th>Gender</th>
+                      <th>Date of Birth</th>
+                      <th>Contact Number</th>
+                      <th>Email</th>
+                      <th>Street</th>
+                      <th>State</th>
+                      <th>Postal Code</th>
+                      <th>Country</th>
+                      <th>Join date</th>
+                      <th>Latest Visit</th>
+                      <th>Total Points</th>
+                      <th>Member Level</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbl-customer-body" style="font-size: 10px"></tbody>
+                </table>
+              </section>
+              <div
+                class="modal fade"
+                id="customer-modal"
+                data-bs-backdrop="static"
+                data-bs-keyboard="false"
+                tabindex="-1"
+                aria-labelledby="staticBackdropLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header bg-dark">
+                      <h1
+                        class="modal-title fs-5 text-white"
+                        id="staticBackdropLabel"
+                      >
+                        Add Loyalty Member
+                      </h1>
+                      <div>
+                        <button
+                          type="button"
+                          id="customer-clear"
+                          class="btn btn-outline-danger me-3"
+                        >
+                          <i class="bi bi-trash3-fill"></i>
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-outline-light border border-0"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <i class="bi bi-x-lg"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="modal-body">
+                      <form id="supplier-inputs">
+                        <div class="row ps-3 pe-3">
+                          <!-- general info -->
+                          <div
+                            class="col-12 w-100 rounded border rounded-bottom-0 border-bottom-0 shadow-sm"
+                          >
+                            <span class="fs-3 fw-bold ms-5 ps-2"
+                              >Member General Info</span
+                            >
+                            <hr />
+                            <div
+                              class="col-12 w-100 d-flex flex-wrap justify-content-evenly"
+                            >
+                              <div class="mb-3 col-5">
+                                <label for="customer-name" class="form-label"
+                                  >Name</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="customer-name"
+                                />
+                              </div>
+                              <div class="mb-3 col-5">
+                                <label for="cus-gender" class="form-label"
+                                  >Gender</label
+                                >
+                                <select
+                                  class="form-select"
+                                  aria-label="Default select example"
+                                  id="cus-gender"
+                                >
+                                  <option selected></option>
+                                  <option value="MALE">MALE</option>
+                                  <option value="FEMALE">FEMALE</option>
+                                </select>
+                              </div>
+                              <div class="mb-3 col-5">
+                                <label
+                                  for="cus-contact"
+                                  class="form-label"
+                                  id="lbl-status"
+                                  >Personal Contact</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="cus-contact"
+                                />
+                              </div>
+                              <div class="mb-3 col-5">
+                                <label for="customer-email" class="form-label"
+                                  >Email</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="customer-email"
+                                />
+                              </div>
+                              <div class="mb-3 col-5">
+                                <label for="customer-dob" class="form-label"
+                                  >Date of Birthday</label
+                                >
+                                <input
+                                  type="date"
+                                  class="form-control"
+                                  id="customer-dob"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <!-- address info -->
+                          <div
+                            class="col-12 w-100 rounded border rounded-top-0 border-top-0 shadow-sm"
+                          >
+                            <span class="fs-4 fw-bold ms-5 ps-2"
+                              >Address Info</span
+                            >
+                            <div
+                              class="col-12 w-100 d-flex flex-wrap justify-content-evenly"
+                            >
+                              <div class="mb-3 col-5">
+                                <label
+                                  for="customer-address-lane"
+                                  class="form-label"
+                                  >Street</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="customer-address-lane"
+                                />
+                              </div>
+                              <div class="mb-3 col-5">
+                                <label
+                                  for="customer-address-state"
+                                  class="form-label"
+                                  >State</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="customer-address-state"
+                                />
+                              </div>
+                              <div class="mb-3 col-5">
+                                <label
+                                  for="customer-address-country"
+                                  class="form-label"
+                                  >Nearest City</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="customer-address-country"
+                                />
+                              </div>
+                              <div class="mb-3 col-5">
+                                <label
+                                  for="customer-address-city"
+                                  class="form-label"
+                                  >Main city</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="customer-address-city"
+                                />
+                              </div>
+                              <div class="mb-3 col-5">
+                                <label
+                                  for="customer-address-code"
+                                  class="form-label"
+                                  >Postal Code</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="customer-address-code"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer bg-dark-subtle">
+                      <button
+                        type="button"
+                        class="btn btn-outline-dark"
+                        id="btn-save-customer"
+                      >
+                        Add Supplier
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- employees -->
+            <section
+              id="employee_content"
+              class="container-fluid m-0 ps-5 pe-4 position-relative"
+            >
+              <div id="" class="w-100 h-100">
+                <section class="container-fluid m-0 p-0 h-100">
+                  <!-- search bar -->
+                  <section
+                    class="d-flex justify-content-sm-between w-100"
+                    style="height: 50px"
+                  >
+                    <!-- search btn -->
+                    <div
+                      class="d-flex flex-row w-25 flex-wrap mt-3 shadow-sm"
+                      style="height: 35px"
+                    >
+                      <span
+                        class="h-100 bg-dark-subtle d-flex justify-content-center align-items-center rounded rounded-end-0"
+                        style="width: 15%"
+                        ><i class="bi bi-search"></i
+                      ></span>
+                      <input
+                        type="text"
+                        class="form-control h-100 rounded rounded-start-0"
+                        placeholder="Search Employee"
+                        style="width: 85%"
+                      />
+                    </div>
+                    <!-- add new employee -->
+                    <button
+                      class="btn btn-sm btn-dark mt-3 me-4"
+                      id="btn-employee-modal"
+                    >
+                      <i class="bi bi-person-plus-fill"></i> Add New Employee
+                    </button>
+                  </section>
+                  <section
+                    class="row w-100 rounded border shadow-sm mt-3 d-flex flex-wrap bg-black ps-4 overflow-y-auto"
+                    style="height: 90%"
+                    id="emp-info-row"
+                  ></section>
+                </section>
+              </div>
+              <div
+                class="modal fade"
+                id="employee-modal"
+                data-bs-backdrop="static"
+                data-bs-keyboard="false"
+                tabindex="-1"
+                aria-labelledby="staticBackdropLabel"
+                aria-hidden="true"
+              >
+                <div
+                  class="modal-dialog modal-dialog-centered modal-fullscreen"
+                >
+                  <div class="modal-content">
+                    <div class="modal-header bg-dark">
+                      <h1
+                        class="modal-title fs-5 fw-bold text-white"
+                        id="staticBackdropLabel"
+                      >
+                        Add Employee
+                      </h1>
+                      <div>
+                        <button
+                          type="button"
+                          id="employee-clear"
+                          class="btn btn-outline-danger me-3"
+                        >
+                          <i class="bi bi-trash3-fill"></i>
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-outline-light border border-0"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <i class="bi bi-x-lg"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="modal-body p-3 ps-5 pe-5" style="height: 500px">
+                      <form id="emp-inputs" style="height: 100%">
+                        <div
+                          class="row rounded border overflow-hidden shadow-lg h-100"
+                        >
+                          <div
+                            class="col-md-4 bg-dark-subtle d-flex flex-column align-items-center"
+                          >
+                            <div
+                              class="mb-1 d-flex flex-column justify-content-center align-items-center bg-light rounded border shadow-sm mt-2 pb-2 col-12"
+                            >
+                              <span class="text-dark fs-3 mb-2 mt-2 fw-bold"
+                                >New Employee</span
+                              >
+                              <div class="d-flex justify-content-center m-2">
+                                <img
+                                  src="assets/images/others/emp-dummy.png"
+                                  id="emp-img-preview"
+                                  class="rounded-circle border"
+                                  style="width: 200px; height: 200px"
+                                />
+                              </div>
+                              <input
+                                type="file"
+                                class="form-control w-75"
+                                id="emp-img"
+                              />
+                            </div>
+                            <div class="mb-1 col-11">
+                              <label for="emp-name" class="form-label"
+                                >Name</label
+                              >
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="emp-name"
+                              />
+                            </div>
+                            <div class="mb-1 col-11">
+                              <label for="emp-email" class="form-label"
+                                >Email</label
+                              >
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="emp-email"
+                              />
+                            </div>
+                            <div
+                              class="mb-1 col-11 d-flex justify-content-evenly align-items-center gap-1"
+                            >
+                              <div class="mb-1" style="width: 49%">
+                                <label for="emp-branch" class="form-label"
+                                  >Branch</label
+                                >
+                                <select
+                                  class="form-select"
+                                  aria-label="Default select example"
+                                  id="emp-branch"
+                                >
+                                  <option selected></option>
+                                </select>
+                              </div>
+                              <div class="mb-1" style="width: 49%">
+                                <label for="emp-gender" class="form-label"
+                                  >Gender</label
+                                >
+                                <select
+                                  class="form-select"
+                                  aria-label="Default select example"
+                                  id="emp-gender"
+                                >
+                                  <option selected></option>
+                                  <option value="MALE">MALE</option>
+                                  <option value="FEMALE">FEMALE</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-8 d-flex flex-column flex-wrap">
+                            <span class="text-dark fs-2 fw-bold ms-3 mt-3"
+                              >General Info</span
+                            >
+                            <hr />
+                            <div
+                              class="col-12 d-flex flex-row justify-content-evenly"
+                            >
+                              <div class="col-5">
+                                <span class="text-dark fs-4 fw-bold mb-3"
+                                  >Personal Info</span
+                                >
+                                <div class="mb-1">
+                                  <label
+                                    for="emp-designation"
+                                    class="form-label"
+                                    >Designation</label
+                                  >
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="emp-designation"
+                                  />
+                                </div>
+                                <div class="mb-1">
+                                  <label for="emp-dob" class="form-label"
+                                    >DOB</label
+                                  >
+                                  <input
+                                    type="date"
+                                    class="form-control"
+                                    id="emp-dob"
+                                  />
+                                </div>
+                                <div class="mb-1">
+                                  <label
+                                    for="emp-civil-status"
+                                    class="form-label"
+                                    id="lbl-status"
+                                    >Civil Status</label
+                                  >
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="emp-civil-status"
+                                  />
+                                </div>
+                                <div class="mb-1">
+                                  <label for="emp-contact" class="form-label"
+                                    >Contact</label
+                                  >
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="emp-contact"
+                                  />
+                                </div>
+                                <div class="mb-1">
+                                  <label
+                                    for="emp-emg-guardian"
+                                    class="form-label"
+                                    >Guardian</label
+                                  >
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="emp-emg-guardian"
+                                  />
+                                </div>
+                                <div class="mb-1">
+                                  <label
+                                    for="emp-emg-contact"
+                                    class="form-label"
+                                    >Guardian Contact</label
+                                  >
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="emp-emg-contact"
+                                  />
+                                </div>
+                              </div>
+                              <div class="col-5">
+                                <span class="text-dark fs-4 fw-bold mb-3"
+                                  >Address Info</span
+                                >
+                                <div class="mb-1">
+                                  <label
+                                    for="emp-address-lane"
+                                    class="form-label"
+                                    >Street</label
+                                  >
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="emp-address-lane"
+                                  />
+                                </div>
+                                <div class="mb-1">
+                                  <label
+                                    for="emp-address-country"
+                                    class="form-label"
+                                    >Nearest City</label
+                                  >
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="emp-address-country"
+                                  />
+                                </div>
+                                <div class="mb-1">
+                                  <label
+                                    for="emp-address-city"
+                                    class="form-label"
+                                    >Main City</label
+                                  >
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="emp-address-city"
+                                  />
+                                </div>
+                                <div class="mb-1">
+                                  <label
+                                    for="emp-address-state"
+                                    class="form-label"
+                                    >State</label
+                                  >
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="emp-address-state"
+                                  />
+                                </div>
+
+                                <div class="mb-1">
+                                  <label
+                                    for="emp-address-code"
+                                    class="form-label"
+                                    >Postal Code</label
+                                  >
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="emp-address-code"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer bg-dark-subtle">
+                      <button
+                        type="button"
+                        class="btn btn-outline-dark"
+                        id="btn-add-emp"
+                      >
+                        Add User
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- branch -->
+            <section
+              id="branch_content"
+              class="container-fluid m-0 p-0 position-relative"
+            >
+              <div id="" class="w-100">
+                <section class="p-3 container-fluid">
+                  <div class="row">
+                    <div class="col-12">
+                      <section class="">
+                        <section class="d-flex justify-content-end">
+                          <button class="btn btn-dark" id="btn-branch-modal">
+                            <i class="bi bi-building-fill-add"></i>
+                            Add New Branch
+                          </button>
+                        </section>
+                        <section class="w-100 mt-3">
+                          <section
+                            class="w-100 overflow-y-auto rounded border shadow-lg p-3"
+                            style="height: 80vh"
+                          >
+                            <table
+                              id="tbl-branch"
+                              class="table table-striped table-hover table-dark"
+                              style="width: 100%"
+                            >
+                              <thead>
+                                <tr style="font-size: 10px">
+                                  <th>Branch Id</th>
+                                  <th>Branch Name</th>
+                                  <th>Branch Contact</th>
+                                  <th>Branch Manager</th>
+                                  <th>Employee Count</th>
+                                  <th>Branch Address</th>
+                                  <th>Branch Opened Date</th>
+                                  <th>Action</th>
+                                </tr>
+                              </thead>
+                              <tbody
+                                style="font-size: 10px"
+                                id="tbl-branch-body"
+                              ></tbody>
+                            </table>
+                          </section>
+                        </section>
+                      </section>
+                    </div>
+                  </div>
+                </section>
+              </div>
+
+              <div
+                class="modal fade"
+                id="branch-modal"
+                data-bs-backdrop="static"
+                data-bs-keyboard="false"
+                tabindex="-1"
+                aria-labelledby="staticBackdropLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header bg-dark">
+                      <h1
+                        class="modal-title fs-5 fw-bold text-white"
+                        id="staticBackdropLabel"
+                      >
+                        Add New Branch
+                      </h1>
+                      <div>
+                        <button
+                          type="button"
+                          id="branch-clear"
+                          class="btn btn-outline-danger me-3"
+                        >
+                          <i class="bi bi-trash3-fill"></i>
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-outline-light border border-0"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <i class="bi bi-x-lg"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="modal-body">
+                      <form id="branch-inputs">
+                        <div class="row ps-3 pe-3">
+                          <div
+                            class="col-12 w-100 rounded rounded-bottom-0 border border-bottom-0 shadow-sm"
+                          >
+                            <span class="fs-3 fw-bold text-dark"
+                              >Branch General Info</span
+                            >
+                            <hr />
+                            <div
+                              class="col-12 w-100 d-flex flex-wrap justify-content-evenly"
+                            >
+                              <div class="mb-3 col-5">
+                                <label for="branch-name" class="form-label"
+                                  >Name</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="branch-name"
+                                />
+                              </div>
+                              <div class="mb-3 col-5">
+                                <label for="branch-contact" class="form-label"
+                                  >Office Contact</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="branch-contact"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="col-12 w-100 rounded rounded-top-0 border border-top-0 shadow-sm"
+                          >
+                            <span class="fs-4 fw-bold text-dark mt-2"
+                              >Address Info</span
+                            >
+                            <div
+                              class="col-12 w-100 d-flex flex-wrap justify-content-evenly"
+                            >
+                              <div class="mb-3 col-5">
+                                <label
+                                  for="branch-address-lane"
+                                  class="form-label"
+                                  >Street</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="branch-address-lane"
+                                />
+                              </div>
+                              <div class="mb-3 col-5">
+                                <label
+                                  for="branch-address-country"
+                                  class="form-label"
+                                  >Nearest City</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="branch-address-country"
+                                />
+                              </div>
+                              <div class="mb-3 col-5">
+                                <label
+                                  for="branch-address-city"
+                                  class="form-label"
+                                  >Main city</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="branch-address-city"
+                                />
+                              </div>
+                              <div class="mb-3 col-5">
+                                <label
+                                  for="branch-address-state"
+                                  class="form-label"
+                                  >State</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="branch-address-state"
+                                />
+                              </div>
+                              <div class="mb-3 col-5">
+                                <label
+                                  for="branch-address-code"
+                                  class="form-label"
+                                  >Postal Code</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="branch-address-code"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          \
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer bg-dark-subtle">
+                      <button
+                        type="button"
+                        class="btn btn-outline-dark"
+                        id="btn-add-branch"
+                      >
+                        Add Branch
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </section>
+        </div>
+      </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="assets/bootstrap-5.3.2-dist/js/code.jquery.com_jquery-3.7.1.min.js"></script>
+    <script src="assets/bootstrap-5.3.2-dist/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap5.js"></script>
+    <script src="assets/utill/navigation.js"></script>
+    <script src="assets/utill/branchValidation.js"></script>
+    <script src="assets/utill/supplierValidation.js"></script>
+    <script src="assets/utill/employeeValidation.js"></script>
+    <script src="assets/utill/environment.js"></script>
+    <script src="assets/controllers/dashboardcontroller.js"></script>
+    <script src="assets/controllers/useraccesschanger.js"></script>
+    <script src="assets/controllers/salecontroller.js"></script>
+    <script src="assets/controllers/inventoryController.js"></script>
+    <script src="assets/controllers/employeeController.js"></script>
+    <script src="assets/controllers/customerController.js"></script>
+    <script src="assets/controllers/suppliercontroller.js"></script>
+    <script src="assets/controllers/refundcontroller.js"></script>
+    <script src="assets/controllers/branchController.js"></script>
+    <script src="assets/utill/supports.js"></script>
+    <script>
+      document.addEventListener(
+        "DOMContentLoaded",
+        (e) => {
+          $("#list-customerList").autocomplete;
+        },
+        false
+      );
+
+      var table;
+      var table2;
+      var table3;
+      var table4;
+      var table5;
+
+      initializeTables();
+
+      function initializeTables() {
+        $(document).ready(function () {
+          if ($.fn.DataTable.isDataTable("#tbl-inventory")) {
+            $("#tbl-inventory").DataTable().destroy();
+          }
+          table = $("#tbl-inventory").DataTable({
+            pagingType: "simple_numbers",
+            scrollX: true,
+            scrollY: "300px",
+          });
+
+          if ($.fn.DataTable.isDataTable("#tbl-supplier")) {
+            $("#tbl-supplier").DataTable().destroy();
+          }
+          table2 = $("#tbl-supplier").DataTable({
+            pagingType: "simple_numbers",
+            scrollX: true,
+            scrollY: "300px",
+          });
+
+          if ($.fn.DataTable.isDataTable("#tbl-customer")) {
+            $("#tbl-customer").DataTable().destroy();
+          }
+          table3 = $("#tbl-customer").DataTable({
+            pagingType: "simple_numbers",
+            scrollX: true,
+            scrollY: "300px",
+          });
+          if ($.fn.DataTable.isDataTable("#tbl-branch")) {
+            $("#tbl-branch").DataTable().destroy();
+          }
+          table4 = $("#tbl-branch").DataTable({
+            pagingType: "simple_numbers",
+            scrollX: true,
+            scrollY: "300px",
+          });
+          if ($.fn.DataTable.isDataTable("#tbl-refund")) {
+            $("#tbl-refund").DataTable().destroy();
+          }
+          table5 = $("#tbl-refund").DataTable({
+            pagingType: "simple_numbers",
+            scrollX: true,
+            scrollY: "300px",
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

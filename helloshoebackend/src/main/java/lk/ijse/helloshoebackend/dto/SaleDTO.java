@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Data
@@ -21,6 +22,7 @@ public class SaleDTO {
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     private PaymentMethod paymentMethod;
     private Boolean isDemo;
+    private Timestamp purchaseDate;
     private List<InventoryDTO> inventories;
     private Integer getqty;
 

@@ -1,7 +1,6 @@
 $(document).ready(function () {
   // initial view handler
-  $("#login-wrapper").css("display", "flex");
-  $("#dboard-wrapper").hide();
+
   $("#admin_content").hide();
   $("#sale_content").hide();
   $("#inventory_content").hide();
@@ -9,6 +8,13 @@ $(document).ready(function () {
   $("#supplier_content").hide();
   $("#customer_content").hide();
   $("#employee_content").hide();
+  $("#branch_content").hide();
+  $("#manager_content").hide();
+
+  $("#logout-btn").click(function () {
+    localStorage.clear();
+    window.location.href = "index.html";
+  });
 
   // Click event handler for employee-item
   $(".employee-item").click(function () {
@@ -19,6 +25,8 @@ $(document).ready(function () {
     $("#supplier_content").hide();
     $("#customer_content").hide();
     $("#employee_content").css("display", "block");
+    $("#branch_content").hide();
+    $("#manager_content").hide();
   });
 
   // Click event handler for customer-item
@@ -30,6 +38,8 @@ $(document).ready(function () {
     $("#supplier_content").hide();
     $("#customer_content").css("display", "block");
     $("#employee_content").hide();
+    $("#branch_content").hide();
+    $("#manager_content").hide();
   });
 
   // Click event handler for supplier-item
@@ -41,6 +51,8 @@ $(document).ready(function () {
     $("#supplier_content").css("display", "block");
     $("#customer_content").hide();
     $("#employee_content").hide();
+    $("#branch_content").hide();
+    $("#manager_content").hide();
   });
 
   // Click event handler for refund-item
@@ -52,6 +64,8 @@ $(document).ready(function () {
     $("#supplier_content").hide();
     $("#customer_content").hide();
     $("#employee_content").hide();
+    $("#branch_content").hide();
+    $("#manager_content").hide();
   });
 
   // Click event handler for inventory-item
@@ -63,6 +77,8 @@ $(document).ready(function () {
     $("#supplier_content").hide();
     $("#customer_content").hide();
     $("#employee_content").hide();
+    $("#branch_content").hide();
+    $("#manager_content").hide();
   });
 
   // Click event handler for pos-item
@@ -74,6 +90,8 @@ $(document).ready(function () {
     $("#supplier_content").hide();
     $("#customer_content").hide();
     $("#employee_content").hide();
+    $("#branch_content").hide();
+    $("#manager_content").hide();
   });
 
   // Click event handler for admin-item
@@ -85,5 +103,31 @@ $(document).ready(function () {
     $("#supplier_content").hide();
     $("#customer_content").hide();
     $("#employee_content").hide();
+    $("#branch_content").hide();
+    $("#manager_content").hide();
+  });
+
+  $(".manager-item").click(function () {
+    $("#admin_content").hide();
+    $("#sale_content").hide();
+    $("#inventory_content").hide();
+    $("#refund_content").hide();
+    $("#supplier_content").hide();
+    $("#customer_content").hide();
+    $("#employee_content").hide();
+    $("#manager_content").css("display", "block");
+    $("#branch_content").hide();
+  });
+
+  $(".branch-item").click(function () {
+    $("#admin_content").hide();
+    $("#sale_content").hide();
+    $("#inventory_content").hide();
+    $("#refund_content").hide();
+    $("#supplier_content").hide();
+    $("#customer_content").hide();
+    $("#employee_content").hide();
+    $("#manager_content").hide();
+    $("#branch_content").css("display", "block");
   });
 });

@@ -1,6 +1,8 @@
 package lk.ijse.helloshoebackend.service.impl;
 
+import lk.ijse.helloshoebackend.dto.BranchDTO;
 import lk.ijse.helloshoebackend.dto.SaleDTO;
+import lk.ijse.helloshoebackend.dto.SupplierDTO;
 import lk.ijse.helloshoebackend.entity.Customer;
 import lk.ijse.helloshoebackend.entity.Inventory;
 import lk.ijse.helloshoebackend.entity.Sale;
@@ -72,6 +74,11 @@ public class SaleServiceImpl implements SaleService {
         }
         saleRepo.save(sale);
         return true;
+    }
+
+    @Override
+    public List<SaleDTO> getAllSales() {
+        return saleRepo.findAll().stream().map(sale -> mapper.map(sale, SaleDTO.class)).toList();
     }
 }
 
