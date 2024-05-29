@@ -3,15 +3,18 @@ package lk.ijse.helloshoebackend.controller;
 import lk.ijse.helloshoebackend.authentication.AuthenticationRequest;
 import lk.ijse.helloshoebackend.authentication.AuthenticationResponse;
 import lk.ijse.helloshoebackend.dto.UserDTO;
+import lk.ijse.helloshoebackend.dto.UserDataDTO;
 import lk.ijse.helloshoebackend.security.jwt.JwtUtil;
 import lk.ijse.helloshoebackend.service.UserDetailService;
 import lk.ijse.helloshoebackend.util.Role;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,6 +26,9 @@ public class AuthController {
     private final UserDetailsService userDetailsService;
 
     private final UserDetailService userDetailService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public AuthController(AuthenticationProvider authenticationManager, JwtUtil jwtTokenUtil, UserDetailsService userDetailsService, UserDetailService userDetailService) {
         this.authenticationManager = authenticationManager;
@@ -55,4 +61,22 @@ public class AuthController {
             throw new Exception("Incorrect username or password", e);
         }
     }
+
+    @PostMapping("/verification")
+    public ResponseEntity<?> verifyAdminPassword(@RequestBody UserDataDTO userDataDTO) {
+        UserDTO userdto = null;
+        try {
+            UserDetails userDetails = userDetailsService.loadUserByUsername(userDataDTO.getUsername());
+            boolean passwordMatches = passwordEncoder.matches(userDataDTO.getPassword(), userDetails.getPassword());
+            userdto = userDetailService.loginUser(userDetails.getUsername());
+            if (passwordMatches && (userdto.getRole().equals(Role.SUPER_ADMIN)|| userdto.getRole().equals(Role.ADMIN))){
+                return ResponseEntity.ok().body("Password verified successfully");
+            } else {
+                return ResponseEntity.status(401).body("Incorrect password");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Error verifying password");
+        }
+    }
+
 }
