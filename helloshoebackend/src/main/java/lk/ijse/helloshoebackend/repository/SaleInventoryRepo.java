@@ -19,5 +19,4 @@ public interface SaleInventoryRepo extends CrudRepository<Sale, String> {
     @Modifying
     @Query(value = "UPDATE sale_inventory SET qty = :qty WHERE sale_id = :saleId AND inventory_id = :itemcode", nativeQuery = true)
     void updateSaleInventoryQty(@Param("saleId") String saleId, @Param("itemcode") String itemcode, @Param("qty") int qty);
-
 }

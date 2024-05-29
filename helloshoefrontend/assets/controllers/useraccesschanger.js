@@ -7,6 +7,7 @@ $("#admin-user-name").text(userdetail.role);
 
 if (userdetail.role === "SUPER_ADMIN") {
   $("#admin_content").css("display", "block");
+  $("#usernamegreeting").text("Hi Super Admin");
   $("#side_bar_option").append(`
   <li class="admin-item nav-item nav-btn">
   <a href="#" class="nav-link nv-btn">
@@ -93,6 +94,7 @@ if (userdetail.role === "SUPER_ADMIN") {
 
 if (userdetail.role === "ADMIN") {
   $("#admin_content").css("display", "block");
+  $("#usernamegreeting").text("Hi Admin");
   $("#side_bar_option").append(`
   <li class="admin-item nav-item nav-btn">
   <a href="#" class="nav-link nv-btn">
