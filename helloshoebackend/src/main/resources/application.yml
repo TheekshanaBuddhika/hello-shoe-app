@@ -26,6 +26,13 @@ spring:
       max-file-size: 10MB
       max-request-size: 10MB
 
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: theekshanaroxx0525@gmail.com
+
+
+
 server:
   port: 8000
   servlet:

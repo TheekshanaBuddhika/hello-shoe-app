@@ -306,3 +306,13 @@ function getAllBranches() {
 }
 
 getAllBranches();
+
+$("#branch-clear").on("click", function () {
+  $("#branch-name").val("");
+  $("#branch-contact").val("");
+  $("#branch-address-lane").val("");
+  $("#branch-address-country").val("");
+  $("#branch-address-city").val("");
+  $("#branch-address-state").val("");
+  $("#branch-address-code").val("");
+});
