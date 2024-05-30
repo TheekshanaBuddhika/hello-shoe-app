@@ -10,8 +10,7 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerDTO {

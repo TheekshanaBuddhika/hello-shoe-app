@@ -1,42 +1,58 @@
-// const supplierAddresRegEx = /^[a-zA-Z0-9\s,.-_]{5,100}$/;
-// const supplierNameRegex = /^[a-zA-Z0-9\s]{5,50}$/;
-// const supplierContactRegex = /^[0-9()-]{5,20}$/;
-// const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+$("#sup-name").on("input", function () {
+  const supplierName = $(this).val();
+  if (supplierName.length < 5) {
+    $("#sup-name-error").text(
+      "Supplier name must be at least 5 characters long."
+    );
+  } else {
+    $("#sup-name-error").text("");
+  }
+});
 
-// let sArray = [];
+// Function to validate contact numbers
+$("#sup-contact-1, #sup-contact-2").on("input", function () {
+  const contactNumber = $(this).val();
+  if (!/^\d+$/.test(contactNumber)) {
+    $("#sup-contact-error").text(
+      "Contact numbers should contain only numbers."
+    );
+  } else {
+    $("#sup-contact-error").text("");
+  }
+});
 
-// sArray.push({ field: $("#supplier-name"), regEx: supplierNameRegex });
-// sArray.push({ field: $("#sup-contact-1"), regEx: supplierContactRegex });
-// sArray.push({ field: $("#sup-contact-2"), regEx: supplierContactRegex });
-// sArray.push({ field: $("#sup-email"), regEx: emailRegex });
-// sArray.push({ field: $("#sup-address-lane"), regEx: supplierAddresRegEx });
-// sArray.push({ field: $("#sup-address-state"), regEx: supplierAddresRegEx });
-// sArray.push({ field: $("#sup-address-city"), regEx: supplierAddresRegEx });
-// sArray.push({ field: $("#sup-address-country"), regEx: supplierAddresRegEx });
-// sArray.push({ field: $("#sup-address-code"), regEx: supplierAddresRegEx });
-// sArray.push({ field: $("#sup-origin-country"), regEx: supplierAddresRegEx });
+// Function to validate email
+$("#sup-email").on("input", function () {
+  const email = $(this).val();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    $("#sup-email-error").text("Invalid email address.");
+  } else {
+    $("#sup-email-error").text("");
+  }
+});
 
-// function validatesupplier() {
-//   let isValid = true;
-//   sArray.forEach(function (item) {
-//     if (!item.regEx.test(item.field.val())) {
-//       item.field.addClass("is-invalid");
-//       isValid = false;
-//     } else {
-//       item.field.removeClass("is-invalid");
-//       item.field.addClass("is-valid");
-//     }
-//   });
-//   return isValid;
-// }
+// Function to validate address fields
+$(
+  "#sup-address-lane, #sup-address-country, #sup-address-city, #sup-address-state, #sup-origin-country"
+).on("input", function () {
+  const fieldValue = $(this).val();
+  if (fieldValue.length < 5) {
+    $(this)
+      .siblings(".error-message")
+      .text("Field must have at least 5 characters.");
+  } else {
+    $(this).siblings(".error-message").text("");
+  }
+});
 
-// $("#supplier-inputs input").on("keydown keyup", function () {
-//   let isTrue = validatesupplier();
-//   if (isTrue) {
-//     $("#btn-add-sup").prop("disabled", false);
-//   } else {
-//     $("#btn-add-sup").prop("disabled", true);
-//   }
-// });
-
-// $("#btn-add-sup").prop("disabled", true);
+// Function to validate postal code
+$("#sup-address-code").on("input", function () {
+  const postalCode = $(this).val();
+  if (!/^\d+$/.test(postalCode)) {
+    $("#sup-address-code-error").text(
+      "Postal code should contain only numbers."
+    );
+  } else {
+    $("#sup-address-code-error").text("");
+  }
+});

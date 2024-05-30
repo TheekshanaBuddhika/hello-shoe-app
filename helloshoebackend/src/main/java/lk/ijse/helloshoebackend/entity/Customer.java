@@ -4,10 +4,7 @@ import jakarta.persistence.*;
 import lk.ijse.helloshoebackend.entity.embedded.Address;
 import lk.ijse.helloshoebackend.util.Gender;
 import lk.ijse.helloshoebackend.util.Level;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Date;
@@ -16,8 +13,7 @@ import java.util.List;
 
 
 @Entity
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Customer {

@@ -17,6 +17,7 @@ function loadBrands() {
     type: "GET",
     success: function (response) {
       let brandList = ["All", ...response];
+      $("#brand-list").empty();
       for (const brand of brandList) {
         if (brand === "All") {
           $("#brand-list").append(`
@@ -63,10 +64,11 @@ function loadProducts() {
             <div class="card h-100 w-100 d-flex flex-column p-1 m-1 shadow-sm">
             <div class="d-flex flex-row h-75 w-100 bg-body-secondary rounded mb-1 ">
             <img src="https://drive.google.com/thumbnail?id=${product.itemPicture}&sz=w1000"  class="card-img-top rounded  w-25" alt="...">
-            <div class="card-body">
-                <div class="d-flex justify-content-center text-center fs-5 fw-bold"
+            <div class="card-body p-1">
+                <div class="d-flex flex-column justify-content-center text-center fs-4 fw-bold text-capitalize"
                 style="font-family:monospace;">
-                    ${product.itemCode}
+                ${product.itemDescription}
+                <small class="fs-6 fw-semibold align-self-center">  ${product.itemCode}</small>
                 </div>
 
                 <div class="d-flex justify-content-sm-between">
@@ -222,11 +224,12 @@ function renderProductForBrand(brand) {
         <div class="card h-100 w-100 d-flex flex-column p-1 m-1 shadow-sm">
         <div class="d-flex flex-row h-75 w-100 bg-body-secondary rounded mb-1 ">
         <img src="https://drive.google.com/thumbnail?id=${product.itemPicture}&sz=w1000"  class="card-img-top rounded  w-25" alt="...">
-        <div class="card-body">
-            <div class="d-flex justify-content-center text-center fs-5 fw-bold"
-            style="font-family:monospace;">
-                ${product.itemCode}
-            </div>
+        <div class="card-body p-1">
+                <div class="d-flex flex-column justify-content-center text-center fs-4 fw-bold text-capitalize"
+                style="font-family:monospace;">
+                ${product.itemDescription}
+                <small class="fs-6 fw-semibold align-self-center">  ${product.itemCode}</small>
+                </div>
 
             <div class="d-flex justify-content-sm-between">
             <small class="text-dark fs-6">Size:</small>
@@ -283,7 +286,7 @@ function renderProductForBrand(brand) {
 $("#btn-move-right").on("click", function () {
   $("#brand-list").animate(
     {
-      scrollLeft: "+=500px",
+      scrollLeft: "+=50px",
     },
     500,
     "linear"
@@ -293,7 +296,7 @@ $("#btn-move-right").on("click", function () {
 $("#btn-move-left").on("click", function () {
   $("#brand-list").animate(
     {
-      scrollLeft: "-=500px",
+      scrollLeft: "-=50px",
     },
     500,
     "linear"
@@ -308,6 +311,7 @@ $("#btn-clear").on("click", function () {
   $("#txt-sub-total").text("Rs. 0");
   $("#txt-point").text("0");
   $("#txt-cus-contact").val("");
+  $("#txt-cash").val("");
   $("#txt-customer-name").text("");
   if (paymentMethod == "CARD") {
     $("#payment-method-checkbox").click();
@@ -321,8 +325,10 @@ $("#btn-clear").on("click", function () {
 
 $("#txt-search-product").on("keyup", function () {
   let search = $(this).val();
-  let filtered = productList.filter((p) =>
-    p.itemCode.toLowerCase().includes(search.toLowerCase())
+  let filtered = productList.filter(
+    (p) =>
+      p.itemCode.toLowerCase().includes(search.toLowerCase()) ||
+      p.itemDescription.toLowerCase().includes(search.toLowerCase())
   );
   $("#product-content").empty();
   for (const product of filtered) {
@@ -331,11 +337,12 @@ $("#txt-search-product").on("keyup", function () {
     <div class="card h-100 w-100 d-flex flex-column p-1 m-1 shadow-sm">
     <div class="d-flex flex-row h-75 w-100 bg-body-secondary rounded mb-1 ">
     <img src="https://drive.google.com/thumbnail?id=${product.itemPicture}&sz=w1000"  class="card-img-top rounded  w-25" alt="...">
-    <div class="card-body">
-        <div class="d-flex justify-content-center text-center fs-5 fw-bold"
-        style="font-family:monospace;">
-            ${product.itemCode}
-        </div>
+    <div class="card-body p-1">
+    <div class="d-flex flex-column justify-content-center text-center fs-4 fw-bold text-capitalize"
+    style="font-family:monospace;">
+    ${product.itemDescription}
+    <small class="fs-6 fw-semibold align-self-center">  ${product.itemCode}</small>
+    </div>
 
         <div class="d-flex justify-content-sm-between">
         <small class="text-dark fs-6">Size:</small>
@@ -436,7 +443,7 @@ $("#btn-proceed-order").on("click", function () {
   let contact = $("#txt-cus-contact").val();
   let customerName = $("#txt-customer-name").text();
   let point = $("#added-new-point").text();
-  let demoCusName = "Demo Customer";
+  let demoCusName = "Customer";
   let txtCash = $("#txt-cash").val();
   let balance = $("#balance-amount").val();
 
@@ -494,15 +501,19 @@ $("#btn-proceed-order").on("click", function () {
         $("#added-new-point").text("");
 
         Swal.fire({
-          title: "Balance",
-          text: "Rs. " + balance.toFixed(3) + " /=" + " has to be returned",
+          title: "Payment Successful",
+          text: "payment has been palced",
           icon: "success",
         });
         $("#txt-cash").val("");
         loadProducts();
       },
       error: function (error) {
-        console.log(error);
+        Swal.fire({
+          title: "Error",
+          text: "Payment failed. Please try again.",
+          icon: "error",
+        });
       },
     });
   }
@@ -583,11 +594,15 @@ $("#btn-proceed-order").on("click", function () {
           text: "payment has been palced",
           icon: "success",
         });
-        $("#txt-cash").val("");
         loadProducts();
       },
       error: function (error) {
         console.log(error);
+        Swal.fire({
+          title: "Error",
+          text: "Payment failed. Please try again.",
+          icon: "error",
+        });
       },
     });
   }

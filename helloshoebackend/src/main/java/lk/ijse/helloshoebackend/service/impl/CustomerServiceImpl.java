@@ -49,7 +49,12 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public boolean updateCustomer(CustomerDTO customerDTO) {
         Customer customer = customerRepo.findById(customerDTO.getCustomerId()).get();
-        mapper.map(customerDTO,customer);
+        customer.setCustomerName(customerDTO.getCustomerName());
+        customer.setGender(customerDTO.getGender());
+        customer.setContact(customerDTO.getContact());
+        customer.setEmail(customerDTO.getEmail());
+        customer.setAddress(customerDTO.getAddress());
+        customer.setDob(customerDTO.getDob());
         customerRepo.save(customer);
         return true;
     }

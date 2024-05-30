@@ -9,6 +9,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+
 @Service
 public class SupplierServiceImpl implements SupplierService {
 
@@ -36,7 +38,10 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public SupplierDTO getSupplier(String id) {
-        return mapper.map(supplierRepo.findById(id).get(), SupplierDTO.class);
+        System.out.println(id);
+        return supplierRepo.findById(id)
+                .map(supplier -> mapper.map(supplier, SupplierDTO.class))
+                .orElseThrow(() -> new NoSuchElementException("Supplier with ID " + id + " not found"));
     }
 
     @Override

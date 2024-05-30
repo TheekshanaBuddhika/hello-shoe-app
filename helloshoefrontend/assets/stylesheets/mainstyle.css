@@ -24,7 +24,11 @@
 }
 
 .emp-loading-pic {
-  width: 100%;
-  height: auto;
-  max-width: 150px; /* Adjust as needed */
+  width: 90%;
+  aspect-ratio: 1/1;
+  max-width: 150px;
+}
+
+.error-message {
+  color: red;
 }

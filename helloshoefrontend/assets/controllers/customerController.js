@@ -27,7 +27,7 @@ $("#btn-save-customer").on("click", function () {
     userEmail: userdetail.username,
     customerId: cusId,
     customerName: $("#customer-name").val(),
-    gender: $("#customer-gender").val(),
+    gender: $("#cus-gender").val(),
     contact: $("#cus-contact").val(),
     email: $("#customer-email").val(),
     address: {
@@ -38,7 +38,43 @@ $("#btn-save-customer").on("click", function () {
       postalCode: $("#customer-address-code").val(),
     },
     dob: $("#customer-dob").val(),
+    totalPoints: 0,
   };
+
+  const requiredFields = [
+    "customerName",
+    "gender",
+    "contact",
+    "email",
+    "address.lane",
+    "address.mainCountry",
+    "address.mainCity",
+    "address.mainState",
+    "address.postalCode",
+    "dob",
+  ];
+
+  for (const field of requiredFields) {
+    let value;
+    if (field.includes(".")) {
+      const [parentField, childField] = field.split(".");
+      value = customer[parentField][childField];
+    } else {
+      value = customer[field];
+    }
+
+    if (!value || value.trim() === "") {
+      Swal.fire({
+        icon: "warning",
+        title: "Incomplete Form",
+        text: `Please complete the ${field
+          .replace(/([A-Z])/g, " $1")
+          .toLowerCase()} field.`,
+        showConfirmButton: true,
+      });
+      return;
+    }
+  }
 
   $.ajax({
     url: BASE_URL + "api/v1/customers",

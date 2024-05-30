@@ -172,158 +172,6 @@ $("#btn-add-item").on("click", function () {
   }
 });
 
-// $("#btn-add-item").on("click", function () {
-//   let formData = new FormData();
-
-//   const item = {
-//     itemCode: itemCode,
-//     supplierId: $("#item-supplier").val(),
-//     itemDescription: $("#item-desc").val(),
-//     itemSoldCount: 0,
-//     brand: $("#item-brand").val(),
-//     qtyOnHand: $("#item-qty").val(),
-//     size: $("#item-size").val(),
-//     buyingPrice: $("#item-buying-price").val(),
-//     sellingPrice: $("#item-selling-price").val(),
-//     expectedProfit: $("#item-expect-profit").val(),
-//     profitMargin: $("#profit-margin").val(),
-//     itemStatus: $("#item-status").val(),
-//     discount: $("#item-discount").val(),
-//     itemType: $("#item-userbility").val(),
-//     itemGender: $("#item-gender").val(),
-//   };
-
-//   for (const [key, value] of Object.entries(item)) {
-//     if (key !== "itemCode" && (!value || value.trim() === "")) {
-//       Swal.fire({
-//         icon: "warning",
-//         title: "Incomplete Form",
-//         text: `Please complete the ${key
-//           .replace(/([A-Z])/g, " $1")
-//           .toLowerCase()} field.`,
-//         showConfirmButton: true,
-//       });
-//       return;
-//     }
-//   }
-
-//   formData.append("item", JSON.stringify(item));
-//   console.log(item);
-
-//   if (
-//     $("#btn-add-item").html() ===
-//     '<i class="bi bi-house-add-fill"></i> Update Product'
-//   ) {
-//     if ($("#item-img")[0].files.length === 0) {
-//       formData.append("itemImage", new File([""], "notUpdate"));
-//     } else {
-//       formData.append("itemImage", $("#item-img")[0].files[0]);
-//     }
-
-//     Swal.fire({
-//       title: "Updating...",
-//       text: "Please wait while we update the product.",
-//       didOpen: () => {
-//         Swal.showLoading();
-//       },
-//       willClose: () => {
-//         Swal.hideLoading();
-//       },
-//     });
-
-//     $.ajax({
-//       type: "PUT",
-//       url: BASE_URL + "api/v1/inventory",
-//       headers: {
-//         Authorization: "Bearer " + userdetail.jwt,
-//       },
-//       contentType: false,
-//       processData: false,
-//       data: formData,
-//       success: function (data) {
-//         Swal.close();
-//         $("#inventory-modal").modal("hide");
-//         loadItems();
-//         Swal.fire({
-//           icon: "success",
-//           title: "Success!",
-//           text: data,
-//           timer: 3000,
-//           timerProgressBar: true,
-//           showConfirmButton: false,
-//           position: "top-end",
-//           toast: true,
-//         });
-//       },
-//       error: function (error) {
-//         Swal.close();
-//         Swal.fire({
-//           icon: "error",
-//           title: "Error!",
-//           text: "Item not updated!",
-//           timer: 3000,
-//           timerProgressBar: true,
-//           showConfirmButton: false,
-//           position: "top-end",
-//           toast: true,
-//         });
-//       },
-//     });
-//   } else {
-//     formData.append("itemImage", $("#item-img")[0].files[0]);
-
-//     Swal.fire({
-//       title: "Saving...",
-//       text: "Please wait while we save the product.",
-//       didOpen: () => {
-//         Swal.showLoading();
-//       },
-//       willClose: () => {
-//         Swal.hideLoading();
-//       },
-//     });
-
-//     $.ajax({
-//       type: "POST",
-//       url: BASE_URL + "api/v1/inventory",
-//       headers: {
-//         Authorization: "Bearer " + userdetail.jwt,
-//       },
-//       contentType: false,
-//       processData: false,
-//       data: formData,
-//       success: function (data) {
-//         Swal.close();
-//         $("#inventory-modal").modal("hide");
-//         loadItems();
-//         Swal.fire({
-//           icon: "success",
-//           title: "Success!",
-//           text: data,
-//           timer: 3000,
-//           timerProgressBar: true,
-//           showConfirmButton: false,
-//           position: "top-end",
-//           toast: true,
-//         });
-//       },
-//       error: function (error) {
-//         Swal.close();
-//         Swal.fire({
-//           icon: "error",
-//           title: "Error!",
-//           text: "Item not added!",
-//           timer: 3000,
-//           timerProgressBar: true,
-//           showConfirmButton: false,
-//           position: "top-end",
-//           toast: true,
-//         });
-//       },
-//     });
-//   }
-// });
-
 function loadAllSupplierId() {
   $.ajax({
     url: BASE_URL + "api/v1/suppliers/get/id",
@@ -360,16 +208,16 @@ function loadItems() {
       let html = "";
       items.forEach((item) => {
         if (item.itemStatus === "AVAILABLE") {
-          status = `<span class="badge bg-success">${item.itemStatus}</span>`;
+          status = `<span class="badge bg-success-subtle text-success">${item.itemStatus}</span>`;
         } else if (item.itemStatus === "LOW_STOCK") {
-          status = `<span class="badge bg-warning">${item.itemStatus}</span>`;
+          status = `<span class="badge bg-warning-subtle text-warning">${item.itemStatus}</span>`;
         } else {
-          status = `<span class="badge bg-danger">${item.itemStatus}</span>`;
+          status = `<span class="badge bg-danger-subtle text-danger">${item.itemStatus}</span>`;
         }
 
         html += `
                       <tr>
-                        <td class="text-center text-dark bg-light-subtle" style="width:200px; ">${item.itemCode}</td>
+                        <td class="text-center text-dark bg-light-subtle fw-bold" style="width:200px; ">${item.itemCode}</td>
                         <td class="text-center d-flex justify-content-center align-items-center "><img src="https://drive.google.com/thumbnail?id=${item.itemPicture}&sz=w1000" alt="no one" class="h-100 w-75 border border-dark-subtle  rounded" style=""></td>
                         <td class="text-center">${item.itemDescription}</td>
                         <td class="text-center">${item.size}</td>
@@ -406,24 +254,36 @@ loadItems();
 loadAllSupplierId();
 
 $("#item-supplier").on("change", function () {
-  renderSupplier($(this).val());
-});
-
-function renderSupplier(id) {
+  let supid = $(this).val();
+  if (supid == "") {
+    $("#suppliersinvent-name").val("");
+    return;
+  }
   $.ajax({
     type: "GET",
-    url: BASE_URL + "api/v1/suppliers/" + id,
+    url: BASE_URL + "api/v1/suppliers",
     headers: {
       Authorization: "Bearer " + userdetail.jwt,
     },
     success: function (data) {
-      $("#supplier-name").text(data.supplierName);
+      console.log(data);
+      data.forEach(function (sup) {
+        if (sup.supplierCode === supid) {
+          console.log(sup);
+          $("#suppliersinvent-name").val(sup.supplierName);
+        }
+      });
     },
     error: function (error) {
-      alert("Supplier not found !");
+      console.log(error);
+      Swal.fire({
+        title: "Error",
+        text: "Supplier not found! Please check the ID and try again.",
+        icon: "error",
+      });
     },
   });
-}
+});
 
 function setEvents() {
   $(".btn-edit-item").on("click", function () {
@@ -458,7 +318,7 @@ function renderItem(id) {
       $("#item-discount").val(data.discount);
       $("#item-userbility").val(data.itemType);
       $("#item-supplier").val(data.supplier.supplierCode);
-      $("#supplier-name").text(data.supplier.supplierName);
+      $("#suppliersinvent-name").val(data.supplier.supplierName);
       $("#item-gender").val(data.itemGender);
       $("#item-img-preview").attr(
         "src",
@@ -489,6 +349,76 @@ $("#inventory-clear").on("click", function () {
   $("#item-discount").val("");
   $("#item-userbility").val("");
   $("#item-supplier").val("");
-  $("#supplier-name").text("");
+  $("#suppliersinvent-name").val("");
   $("#item-gender").val("");
+});
+
+$("#item-discount").on("input", function (e) {
+  if (this.value < 0) {
+    this.value = 0;
+  }
+});
+
+$("#item-size").on("input", function (e) {
+  if (this.value < 0) {
+    this.value = 0;
+  }
+});
+
+function loadselectBrands() {
+  $.ajax({
+    url: BASE_URL + "api/v1/inventory/get/brands",
+    headers: {
+      Authorization: "Bearer " + userdetail.jwt,
+    },
+    type: "GET",
+    success: function (data) {
+      data.forEach(function (brand) {
+        $("#item-brand").append(
+          '<option value="' + brand + '">' + brand + "</option>"
+        );
+      });
+    },
+    error: function (error) {
+      console.log(error);
+    },
+  });
+}
+
+loadselectBrands();
+
+function validateInputField(selector) {
+  $(selector)
+    .on("input", function () {
+      let value = $(this).val();
+      if (value < 0) {
+        $(this).val(0);
+        Swal.fire({
+          title: "Invalid Input",
+          text: "Value cannot be a negative number.",
+          icon: "warning",
+        });
+      }
+    })
+    .on("keypress", function (e) {
+      if (e.which < 48 || e.which > 57) {
+        e.preventDefault();
+        Swal.fire({
+          title: "Invalid Input",
+          text: "Only numbers are allowed.",
+          icon: "warning",
+        });
+      }
+    });
+}
+
+const fields = [
+  "#item-qty",
+  "#item-buying-price",
+  "#item-selling-price",
+  "#item-expect-profit",
+  "#profit-margin",
+];
+fields.forEach(function (field) {
+  validateInputField(field);
 });

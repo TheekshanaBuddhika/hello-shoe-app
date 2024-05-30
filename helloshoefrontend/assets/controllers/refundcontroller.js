@@ -13,11 +13,13 @@ function getSaleInventory(saleId) {
       console.log(items);
       let itemsHtml =
         `<form id="refund-inputs" class="p-3 h-100">` +
-        `<div class="d-flex flex-column w-100 h-100 rounded border border-1 shadow-lg">`;
+        `<div class="d-flex flex-column w-100 h-100 rounded border border-1 shadow-lg p-3">`;
       items.forEach(function (item) {
         let price = 0;
+        let itmname = "";
         inventdtl.forEach(function (inventory) {
           if (item.inventory_id == inventory.itemCode) {
+            itmname = inventory.itemDescription;
             price = parseFloat(
               inventory.sellingPrice -
                 inventory.sellingPrice * (inventory.discount / 100)
@@ -26,13 +28,16 @@ function getSaleInventory(saleId) {
         });
 
         itemsHtml +=
-          `<div class="d-flex flex-column item-data" data-sale-id="${saleId}" data-item-code="${item.inventory_id}" data-qty="${item.qty}" data-price="${price}" data-deducted-qty="0">` +
-          item.inventory_id +
-          " - Qty: " +
+          `<div class="d-flex flex-row justify-content-evenly  item-data text-dark fw-bold" data-sale-id="${saleId}" data-item-code="${item.inventory_id}" data-qty="${item.qty}" data-price="${price}" data-deducted-qty="0">` +
+          '<div class="d-flex justify-content-between gap-3 bg-body-tertiary rounded w-25 mb-2">' +
+          "Item Name-" +
+          itmname +
+          "<br>Item Qty: " +
           item.qty +
-          '<div class="d-flex justify-content-between gap-3 bg-body-tertiary rounded">' +
+          "</div>" +
+          '<div class="d-flex justify-content-between gap-3 bg-body-tertiary rounded w-50 mb-2">' +
           '<button type="button" class="btn btn-dark w-25 rounded rounded-end-0 btn-sm btn-min-qty">-</button>' +
-          '<small class="text-dark mt-1 fw-bold txt-qty">' +
+          '<small class="d-flex justify-content-center align-align-items-center  me-5 pe-5 text-dark mt-1 fw-bold txt-qty">' +
           item.qty +
           "</small>" +
           "</div></div>";
@@ -43,7 +48,7 @@ function getSaleInventory(saleId) {
       $("#refund-modal").modal("show");
 
       $(".btn-min-qty").on("click", function () {
-        const itemElement = $(this).closest(".d-flex.flex-column");
+        const itemElement = $(this).closest(".d-flex.flex-row");
         let qty = parseInt(itemElement.attr("data-qty"));
         let deductedQty = parseInt(itemElement.attr("data-deducted-qty"));
         const price = parseFloat(itemElement.attr("data-price"));
@@ -272,15 +277,21 @@ function getAllSales() {
 
           if (timeDiff <= threeDaysInMilliseconds && element.subTotal > 0) {
             html += `
-                  <tr style="font-size: 10px">
-                    <td class="text-center text-dark bg-light-subtle" style="width:80px;">${element.saleId}</td>
+                  <tr ">
+                    <td class="text-center text-dark bg-light-subtle" style="width:80px;">${
+                      element.saleId
+                    }</td>
                     <td class="text-center">${element.customerName}</td>
-                    <td class="text-center">${element.customerContact}</td>
+                    <td class="text-center">${
+                      element.customerContact ? element.customerContact : "-"
+                    }</td>
                     <td class="text-center">${element.purchaseDate}</td>
                     <td class="text-center">${element.cashierName}</td>
                     <td class="text-center">${element.subTotal}</td>
                     <td class="d-flex">
-                      <button style="height: 35px" class="btn btn-sm btn-light btn-edit-refund" data-sale-id="${element.saleId}">
+                      <button style="height: 35px" class="btn btn-sm btn-light btn-edit-refund" data-sale-id="${
+                        element.saleId
+                      }">
                         <i class="bi bi-pen-fill"></i>Refund
                       </button>
                     </td>

@@ -20,6 +20,35 @@ $("#btn-add-branch").on("click", function () {
       postalCode: $("#branch-address-code").val(),
     },
   };
+  const requiredFields = [
+    "branchName",
+    "branchContact",
+    "address.lane",
+    "address.mainCountry",
+    "address.mainCity",
+    "address.mainState",
+    "address.postalCode",
+  ];
+
+  for (const field of requiredFields) {
+    const value = field
+      .split(".")
+      .reduce(
+        (obj, key) => (obj && obj[key] !== undefined ? obj[key] : ""),
+        branch
+      );
+    if (!value || value.trim() === "") {
+      Swal.fire({
+        icon: "warning",
+        title: "Incomplete Form",
+        text: `Please complete the ${field
+          .replace(/([A-Z])/g, " $1")
+          .toLowerCase()} field.`,
+        showConfirmButton: true,
+      });
+      return; // Stop further execution if a required field is empty
+    }
+  }
   if (
     $("#btn-add-branch").html() ===
     '<i class="bi bi-building-fill-add"></i>Add Branch'

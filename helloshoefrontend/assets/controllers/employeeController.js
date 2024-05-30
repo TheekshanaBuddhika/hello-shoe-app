@@ -11,23 +11,166 @@ $("#emp-img").on("change", function () {
     $("#emp-img-preview").attr("src", reader.result);
   };
 });
-let timerInterval;
-$("#btn-add-emp").click(function () {
-  Swal.fire({
-    timer: 100000,
-    timerProgressBar: true,
-    didOpen: () => {
-      Swal.showLoading();
-    },
-    willClose: () => {
-      clearInterval(timerInterval);
-    },
-  }).then((result) => {
-    if (result.dismiss === Swal.DismissReason.timer) {
-      console.log("I was closed by the timer");
-    }
-  });
 
+// $("#btn-add-emp").click(function () {
+//   let formData = new FormData();
+//   const employee = {
+//     empId: employeeId,
+//     empName: $("#emp-name").val(),
+//     gender: $("#emp-gender").val(),
+//     emergencyContact: $("#emp-emg-contact").val(),
+//     emergencyInfo: $("#emp-emg-guardian").val(),
+//     role:
+//       $("#emp-designation").val() === "Manager" || "manager" ? "ADMIN" : "USER",
+//     status: $("#emp-civil-status").val(),
+//     email: $("#emp-email").val(),
+//     contact: $("#emp-contact").val(),
+//     designation: $("#emp-designation").val(),
+//     dob: $("#emp-dob").val(),
+//     branchId: $("#emp-branch").val(),
+//     address: {
+//       lane: $("#emp-address-lane").val(),
+//       mainCountry: $("#emp-address-country").val(),
+//       mainCity: $("#emp-address-city").val(),
+//       mainState: $("#emp-address-state").val(),
+//       postalCode: $("#emp-address-code").val(),
+//     },
+//   };
+
+//   if (
+//     $(this).html() === '<i class="bi bi-person-fill-add"></i>Update Employee'
+//   ) {
+//     formData.append("employee", JSON.stringify(employee));
+//     if ($("#emp-img")[0].files.length === 0) {
+//       formData.append("image", new File([""], "notUpdate"));
+//     } else {
+//       formData.append("image", $("#emp-img")[0].files[0]);
+//     }
+//     Swal.fire({
+//       title: "Updating...",
+//       text: "Please wait while we update the employee.",
+//       didOpen: () => {
+//         Swal.showLoading();
+//       },
+//       willClose: () => {
+//         Swal.hideLoading();
+//       },
+//     });
+//     $.ajax({
+//       url: BASE_URL + "api/v1/employee",
+//       type: "PUT",
+//       data: formData,
+//       contentType: false,
+//       processData: false,
+//       headers: {
+//         Authorization: "Bearer " + userdetail.jwt,
+//       },
+//       success: function (data) {
+//         loadAllAdmins();
+//         loadAllUsers();
+//         $("#employee-modal").modal("hide");
+//         const Toast = Swal.mixin({
+//           toast: true,
+//           position: "top-end",
+//           showConfirmButton: false,
+//           timer: 3000,
+//           timerProgressBar: true,
+//           didOpen: (toast) => {
+//             toast.onmouseenter = Swal.stopTimer;
+//             toast.onmouseleave = Swal.resumeTimer;
+//           },
+//         });
+//         Toast.fire({
+//           icon: "success",
+//           title: data,
+//         });
+//         $("#employee-modal").modal("hide");
+//       },
+//       error: function (error) {
+//         clearInterval(timerInterval);
+//         const Toast = Swal.mixin({
+//           toast: true,
+//           position: "top-end",
+//           showConfirmButton: false,
+//           timer: 3000,
+//           timerProgressBar: true,
+//           didOpen: (toast) => {
+//             toast.onmouseenter = Swal.stopTimer;
+//             toast.onmouseleave = Swal.resumeTimer;
+//           },
+//         });
+//         Toast.fire({
+//           icon: "error",
+//           title: "Failed to update employee",
+//         });
+//       },
+//     });
+//   } else {
+//     formData.append("employee", JSON.stringify(employee));
+//     formData.append("image", $("#emp-img")[0].files[0]);
+//     Swal.fire({
+//       title: "Updating...",
+//       text: "Please wait while we saving the employee.",
+//       didOpen: () => {
+//         Swal.showLoading();
+//       },
+//       willClose: () => {
+//         Swal.hideLoading();
+//       },
+//     });
+//     $.ajax({
+//       url: BASE_URL + "api/v1/employee",
+//       type: "POST",
+//       data: formData,
+//       contentType: false,
+//       processData: false,
+//       headers: {
+//         Authorization: "Bearer " + userdetail.jwt,
+//       },
+//       success: function (data) {
+//         loadAllAdmins();
+//         loadAllUsers();
+//         $("#branch-modal").modal("hide");
+//         const Toast = Swal.mixin({
+//           toast: true,
+//           position: "top-end",
+//           showConfirmButton: false,
+//           timer: 3000,
+//           timerProgressBar: true,
+//           didOpen: (toast) => {
+//             toast.onmouseenter = Swal.stopTimer;
+//             toast.onmouseleave = Swal.resumeTimer;
+//           },
+//         });
+//         Toast.fire({
+//           icon: "success",
+//           title: data,
+//         });
+//         $("#employee-modal").modal("hide");
+//       },
+//       error: function (error) {
+//         clearInterval(timerInterval);
+//         const Toast = Swal.mixin({
+//           toast: true,
+//           position: "top-end",
+//           showConfirmButton: false,
+//           timer: 3000,
+//           timerProgressBar: true,
+//           didOpen: (toast) => {
+//             toast.onmouseenter = Swal.stopTimer;
+//             toast.onmouseleave = Swal.resumeTimer;
+//           },
+//         });
+//         Toast.fire({
+//           icon: "error",
+//           title: "Failed to add employee",
+//         });
+//       },
+//     });
+//   }
+// });
+
+$("#btn-add-emp").click(function () {
   let formData = new FormData();
   const employee = {
     empId: employeeId,
@@ -36,7 +179,9 @@ $("#btn-add-emp").click(function () {
     emergencyContact: $("#emp-emg-contact").val(),
     emergencyInfo: $("#emp-emg-guardian").val(),
     role:
-      $("#emp-designation").val() === "Manager" || "manager" ? "ADMIN" : "USER",
+      $("#emp-designation").val().toLowerCase() === "manager"
+        ? "ADMIN"
+        : "USER",
     status: $("#emp-civil-status").val(),
     email: $("#emp-email").val(),
     contact: $("#emp-contact").val(),
@@ -52,131 +197,139 @@ $("#btn-add-emp").click(function () {
     },
   };
 
-  if (
-    $(this).html() === '<i class="bi bi-person-fill-add"></i>Update Employee'
-  ) {
-    formData.append("employee", JSON.stringify(employee));
+  const requiredFields = [
+    "empName",
+    "gender",
+    "emergencyContact",
+    "emergencyInfo",
+    "role",
+    "status",
+    "email",
+    "contact",
+    "designation",
+    "dob",
+    "branchId",
+    "address.lane",
+    "address.mainCountry",
+    "address.mainCity",
+    "address.mainState",
+    "address.postalCode",
+  ];
+
+  for (const field of requiredFields) {
+    const value = field
+      .split(".")
+      .reduce(
+        (obj, key) => (obj && obj[key] !== undefined ? obj[key] : ""),
+        employee
+      );
+    if (!value || value.trim() === "") {
+      Swal.fire({
+        icon: "warning",
+        title: "Incomplete Form",
+        text: `Please complete the ${field
+          .replace(/([A-Z])/g, " $1")
+          .toLowerCase()} field.`,
+        showConfirmButton: true,
+      });
+      return;
+    }
+  }
+
+  const isUpdate =
+    $(this).html() === '<i class="bi bi-person-fill-add"></i>Update Employee';
+
+  formData.append("employee", JSON.stringify(employee));
+  if (isUpdate) {
     if ($("#emp-img")[0].files.length === 0) {
       formData.append("image", new File([""], "notUpdate"));
     } else {
       formData.append("image", $("#emp-img")[0].files[0]);
     }
-    $.ajax({
-      url: BASE_URL + "api/v1/employee",
-      type: "PUT",
-      data: formData,
-      contentType: false,
-      processData: false,
-      headers: {
-        Authorization: "Bearer " + userdetail.jwt,
-      },
-      success: function (data) {
-        clearInterval(timerInterval);
-        loadAllAdmins();
-        loadAllUsers();
-        $("#employee-modal").modal("hide");
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-          },
-        });
-        Toast.fire({
-          icon: "success",
-          title: data,
-        });
-        $("#employee-modal").modal("hide");
-      },
-      error: function (error) {
-        clearInterval(timerInterval);
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-          },
-        });
-        Toast.fire({
-          icon: "error",
-          title: "Failed to update employee",
-        });
-      },
-    });
   } else {
-    formData.append("employee", JSON.stringify(employee));
     formData.append("image", $("#emp-img")[0].files[0]);
-    $.ajax({
-      url: BASE_URL + "api/v1/employee",
-      type: "POST",
-      data: formData,
-      contentType: false,
-      processData: false,
-      headers: {
-        Authorization: "Bearer " + userdetail.jwt,
-      },
-      success: function (data) {
-        clearInterval(timerInterval);
-        loadAllAdmins();
-        loadAllUsers();
-        $("#branch-modal").modal("hide");
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-          },
-        });
-        Toast.fire({
-          icon: "success",
-          title: data,
-        });
-        $("#employee-modal").modal("hide");
-      },
-      error: function (error) {
-        clearInterval(timerInterval);
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-          },
-        });
-        Toast.fire({
-          icon: "error",
-          title: "Failed to add employee",
-        });
-      },
-    });
   }
+
+  Swal.fire({
+    title: isUpdate ? "Updating..." : "Saving...",
+    text: isUpdate
+      ? "Please wait while we update the employee."
+      : "Please wait while we save the employee.",
+    didOpen: () => {
+      Swal.showLoading();
+    },
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+  });
+
+  $.ajax({
+    url: BASE_URL + "api/v1/employee",
+    type: isUpdate ? "PUT" : "POST",
+    data: formData,
+    contentType: false,
+    processData: false,
+    headers: {
+      Authorization: "Bearer " + userdetail.jwt,
+    },
+    success: function (data) {
+      $("#employee-modal").modal("hide");
+      Swal.close();
+      $("#emp-info-row").empty();
+      loadallinfo();
+      loadAllAdmins();
+      loadAllUsers();
+
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: "success",
+        title: data,
+      });
+    },
+    error: function (error) {
+      Swal.close();
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: isUpdate
+          ? "Failed to update employee"
+          : "Failed to add employee",
+      });
+    },
+  });
 });
 
 function loadBranchIds() {
   $.ajax({
-    url: BASE_URL + "api/v1/branch/get/id",
+    url: BASE_URL + "api/v1/branch",
     type: "GET",
     headers: {
       Authorization: "Bearer " + userdetail.jwt,
     },
     success: function (data) {
       data.forEach((branch) => {
-        $("#emp-branch").append(`<option value="${branch}">${branch}</option>`);
+        $("#emp-branch").append(
+          `<option value="${branch.branchId}">${branch.branchName}</option>`
+        );
       });
     },
     error: function (error) {
@@ -206,47 +359,53 @@ let employeeId;
 function createEmployeeCard(employee) {
   return `
     <div class="col position-relative">
-      <div class="card mt-3 p-2">
+      <div class="card mt-3 border border-2 border-dark overflow-hidden">
         <div class="row">
           <!-- Left side: Profile Picture -->
-          <div class="col-4 d-flex justify-content-center align-items-center">
-            <img src="https://drive.google.com/thumbnail?id=${employee.profilePic}&sz=w1000" class="rounded-circle emp-loading-pic">
+          <div class="pe-1 col-4 d-flex justify-content-center align-items-center bg-dark">
+            <img src="https://drive.google.com/thumbnail?id=${employee.profilePic}&sz=w1000" class="rounded-circle border border-white emp-loading-pic">
           </div>
           <!-- Right side: Employee Details -->
           <div class="col-8">
-            <div class="employee-header"></div>
-            <small class="text-center emp-id">${employee.empId}</small>
-            <h6 class="text-center">${employee.empName}</h6>
-            <small class="text-center emp-designation">${employee.designation}</small>
+            <div class="employee-header "></div>
+            <small class="text-center emp-id fs-6 fw-bold text-dark-emphasis">${employee.empId}</small>
+            <h6 class="text-center fs-4 text-capitalize">${employee.empName}</h6>
+            
             <div class="d-flex gap-5 justify-content-sm-between px-4">
-              <small>Branch</small>
-              <small>${employee.branchName}</small>
+            <small class="fw-bold">Designation</small>
+            <small class="text-center fw-bold emp-designation">${employee.designation}</small>
+          </div>
+            <div class="d-flex gap-5 justify-content-sm-between px-4">
+              <small class="fw-bold">Branch</small>
+              <small class="fw-bold">${employee.branchName}</small>
             </div>
             <div class="d-flex gap-5 justify-content-sm-between px-4">
-              <small>Date of Birth</small>
-              <small class="dob">${employee.dob}</small>
+              <small class="fw-bold">Date of Birth</small>
+              <small class="fw-bold dob">${employee.dob}</small>
             </div>
             <div class="d-flex gap-5 justify-content-sm-between px-4">
-              <small>Gender</small>
-              <small>${employee.gender}</small>
+              <small class="fw-bold">Gender</small>
+              <small class="fw-bold">${employee.gender}</small>
             </div>
             <div class="d-flex gap-5 justify-content-sm-between px-4">
-              <small>Email</small>
-              <small class="email">${employee.email}</small>
+              <small class="fw-bold">Email</small>
+              <small class="fw-bold email">${employee.email}</small>
             </div>
             <div class="d-flex gap-5 justify-content-sm-between px-4">
-              <small>Contact No</small>
-              <small class="emp-contact">${employee.contact}</small>
-            </div>
-            <small class="text-center mt-2 text-dark">${employee.address.lane}<br>Dickwall</small>
-            <small class="text-danger">Emergency</small>
+              <small class="fw-bold">Contact No</small>
+              <small class="fw-bold emp-contact">${employee.contact}</small>
+            </div>     
             <div class="d-flex gap-5 mt-2 justify-content-sm-between px-4">
-              <small class="emg-info">${employee.emergencyInfo}</small>
-              <small class="emg-contact">${employee.emergencyContact}</small>
+              <small class="fw-bold">Guardian Name</small>
+              <small class="fw-bold emg-info">${employee.emergencyInfo}</small>
             </div>
+            <div class="d-flex gap-5 mt-2 justify-content-sm-between px-4">
+            <small class="fw-bold">Guardian Contacts</small>
+            <small class="fw-bold emg-contact">${employee.emergencyContact}</small>
+          </div>
             <hr>
-            <div class="d-flex mt-2 justify-content-end px-4">
-              <button class="btn btn-sm btn-primary btn-edit-employee">Edit</button>
+            <div class="d-flex  justify-content-end bg-dark-subtle w-100 mb-2 rounded">
+              <button class="btn btn-sm btn-outline-dark btn-edit-employee"><i class="bi bi-pen-fill"></i> Edit</button>
             </div>
           </div>
         </div>
@@ -292,7 +451,7 @@ function loadallinfo() {
     success: function (data) {
       data.forEach((branch) => {
         $("#emp-info-row").append(`
-        <span  class="fs-3 fw-bold text-dark"
+        <span  class="fs-3 fw-bold text-white"
         >${branch.branchName}
       </span>
       <section
@@ -543,3 +702,21 @@ function loadallUsers(branchId) {
 }
 
 function setEvent() {}
+$("#employee-clear").on("click", function () {
+  $("#emp-name").val("");
+  $("#emp-gender").val("");
+  $("#emp-emg-contact").val("");
+  $("#emp-emg-guardian").val("");
+  $("#emp-designation").val("");
+  $("#emp-civil-status").val("");
+  $("#emp-email").val("");
+  $("#emp-contact").val("");
+  $("#emp-designation").val("");
+  $("#emp-dob").val("");
+  $("#emp-branch").val("");
+  $("#emp-address-lane").val("");
+  $("#emp-address-country").val("");
+  $("#emp-address-city").val("");
+  $("#emp-address-state").val("");
+  $("#emp-address-code").val("");
+});

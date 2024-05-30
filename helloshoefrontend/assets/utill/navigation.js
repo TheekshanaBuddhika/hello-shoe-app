@@ -31,6 +31,7 @@ $(document).ready(function () {
 
   // Click event handler for customer-item
   $(".customer-item").click(function () {
+    loadAllCustomers();
     $("#admin_content").hide();
     $("#sale_content").hide();
     $("#inventory_content").hide();
@@ -44,6 +45,7 @@ $(document).ready(function () {
 
   // Click event handler for supplier-item
   $(".supplier-item").click(function () {
+    loadSuppliers();
     $("#admin_content").hide();
     $("#sale_content").hide();
     $("#inventory_content").hide();
@@ -57,6 +59,7 @@ $(document).ready(function () {
 
   // Click event handler for refund-item
   $(".refund-item").click(function () {
+    getAllSales();
     $("#admin_content").hide();
     $("#sale_content").hide();
     $("#inventory_content").hide();
@@ -70,6 +73,7 @@ $(document).ready(function () {
 
   // Click event handler for inventory-item
   $(".inventory-item").click(function () {
+    loadItems();
     $("#admin_content").hide();
     $("#sale_content").hide();
     $("#inventory_content").css("display", "block");
@@ -83,6 +87,8 @@ $(document).ready(function () {
 
   // Click event handler for pos-item
   $(".pos-item").click(function () {
+    loadProducts();
+    loadBrands();
     $("#admin_content").hide();
     $("#sale_content").css("display", "block");
     $("#inventory_content").hide();

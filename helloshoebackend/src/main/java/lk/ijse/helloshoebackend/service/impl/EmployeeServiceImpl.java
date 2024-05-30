@@ -110,6 +110,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setEmergencyContact(employeeDTO.getEmergencyContact());
         employee.setDob(employeeDTO.getDob());
         employee.setGender(employeeDTO.getGender());
+        employee.setStatus(employeeDTO.getStatus());
         employee.setAddress(employeeDTO.getAddress());
         if (!file.getOriginalFilename().equals("notUpdate")){
             String image = uploadService.uploadFile(file);
